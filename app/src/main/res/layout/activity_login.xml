@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="app.doing.com.doing.LoginActivity"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/name_et"
+        android:hint="  账号/手机号/邮箱"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/bg_border"
+        android:layout_gravity="center_horizontal"/>
+    <EditText
+        android:id="@+id/password_et"
+        android:hint="  密码"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/bg_border"
+        android:layout_gravity="center_horizontal"/>
+    <TextView
+        android:id="@+id/forget_tv"
+        android:text="忘记密码"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:gravity="center_vertical|right"
+        android:layout_gravity="center_horizontal"/>
+    <Button
+        android:id="@+id/login_bt"
+        android:text="登录"
+        android:textColor="#fff"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/loginbtn"/>
+    <Button
+        android:id="@+id/register_bt"
+        android:text="注册"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/regbtn"/>
+
+</LinearLayout>

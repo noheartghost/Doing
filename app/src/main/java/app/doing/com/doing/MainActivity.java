@@ -4,14 +4,17 @@ import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewConfiguration;
+import android.widget.FrameLayout;
 
 import app.doing.com.doing.find.FindFragment;
 import app.doing.com.doing.handpick.HandpickFragment;
 import app.doing.com.doing.me.MeFragment;
 import app.doing.com.doing.moment.MomentFragment;
 
-public class MainActivity extends Activity implements View.OnClickListener{
+public class MainActivity extends Activity implements View.OnClickListener,View.OnTouchListener{
     private HandpickFragment handpickFragment;
     private FindFragment findFragment;
     private MomentFragment momentFragment;
@@ -24,6 +27,12 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
     /*对Fragment进行管理*/
     private FragmentManager fragmentManager;
+
+    //手指按下时的屏幕y坐标
+    private float yDown;
+    //在被判定为滚动之前用户手指可以移动的最大值
+    private int touchSlop;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +45,9 @@ public class MainActivity extends Activity implements View.OnClickListener{
     }
 
     private void initViews(){
+        FrameLayout frameLayout = findViewById(R.id.content);
+        frameLayout.setOnTouchListener(this);
+        touchSlop = ViewConfiguration.get(this.getApplicationContext()).getScaledTouchSlop();
 
         handpickText = findViewById(R.id.handpick_text);
         findText = findViewById(R.id.find_text);
@@ -127,5 +139,45 @@ public class MainActivity extends Activity implements View.OnClickListener{
         }
     }
 
+    /*隐藏底部菜单*/
+    private void hideBottom(){
+        handpickText.setVisibility(View.GONE);
+        findText.setVisibility(View.GONE);
+        momentText.setVisibility(View.GONE);
+        meText.setVisibility(View.GONE);
+    }
 
+    /*显示底部菜单*/
+    private void showBottom(){
+        handpickText.setVisibility(View.VISIBLE);
+        findText.setVisibility(View.VISIBLE);
+        momentText.setVisibility(View.VISIBLE);
+        meText.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        switch(event.getAction()){
+            case MotionEvent.ACTION_DOWN:
+                yDown = event.getRawY();
+                break;
+            case MotionEvent.ACTION_MOVE:
+                float yRaw = event.getRawY();
+                int distance = (int)(yRaw - yDown);
+                //如果手指是上拉状态，显示底部
+                if (distance <= -touchSlop){
+                    showBottom();
+                }
+                //如果手指是下拉状态，隐藏底部
+                if (distance > touchSlop){
+                    hideBottom();
+                }
+                break;
+            case MotionEvent.ACTION_UP:
+            default:
+                //手指抬起，显示底部
+                break;
+        }
+        return true;
+    }
 }

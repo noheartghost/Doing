@@ -18,8 +18,10 @@ import java.util.List;
 import app.doing.com.doing.R;
 import app.doing.com.doing.customView.ImageButtonCustom;
 import app.doing.com.doing.handpick.adapter.CoachItemAdapter;
+import app.doing.com.doing.handpick.adapter.CourseItemAdapter;
 import app.doing.com.doing.handpick.adapter.GymItemAdapter;
 import app.doing.com.doing.handpick.item.CoachItem;
+import app.doing.com.doing.handpick.item.CourseItem;
 import app.doing.com.doing.handpick.item.GymItem;
 
 
@@ -34,8 +36,10 @@ public class HandpickFragment extends Fragment implements View.OnClickListener{
 
     //展示的4个精选场馆
     private List<GymItem> gymItemList = new ArrayList<>();
-    //展示的4个精选场馆
+    //展示的4个精选教练
     private List<CoachItem> coachItemList = new ArrayList<>();
+    //展示的4个精选课程
+    private List<CourseItem> courseItemList = new ArrayList<>();
 
 
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup container, Bundle savedInstanceState){
@@ -56,8 +60,10 @@ public class HandpickFragment extends Fragment implements View.OnClickListener{
         course_ibc.setOnClickListener(this);
         coach_ibc.setOnClickListener(this);
 
+        /*获取精选数据列表*/
         getGymItemList();
         getCoachItemList();
+        getCourseItemList();
 
         /*设置RecyclerView布局*/
 
@@ -72,6 +78,12 @@ public class HandpickFragment extends Fragment implements View.OnClickListener{
         layoutManager_coach.setOrientation(LinearLayoutManager.HORIZONTAL);
         recyclerView_coach.setLayoutManager(layoutManager_coach);
 
+        //设置课程
+        RecyclerView recyclerView_course = view.findViewById(R.id.handpick_course_list);
+        LinearLayoutManager layoutManager_course = new LinearLayoutManager(getActivity());
+        layoutManager_course.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView_course.setLayoutManager(layoutManager_course);
+
         /*设置适配器*/
 
         //设置场馆gym
@@ -82,6 +94,9 @@ public class HandpickFragment extends Fragment implements View.OnClickListener{
         CoachItemAdapter coachItemAdapter = new CoachItemAdapter(coachItemList);
         recyclerView_coach.setAdapter(coachItemAdapter);
 
+        //设置课程
+        CourseItemAdapter courseItemAdapter = new CourseItemAdapter(courseItemList);
+        recyclerView_course.setAdapter(courseItemAdapter);
 
     }
 
@@ -129,5 +144,16 @@ public class HandpickFragment extends Fragment implements View.OnClickListener{
         coachItemList.add(coachItem3);
         CoachItem coachItem4 = new CoachItem(R.drawable.gtm_item_pic);
         coachItemList.add(coachItem4);
+    }
+
+    private void getCourseItemList(){
+        CourseItem courseItem1 = new CourseItem(R.drawable.gtm_item_pic,"基础拳击课",666,"每周三、周五","2个月","基础拳击课基础拳击课基础拳击课基础拳击课基础拳击课基础拳击课基础拳击课基础拳击课");
+        courseItemList.add(courseItem1);
+        CourseItem courseItem2 = new CourseItem(R.drawable.gtm_item_pic,"基础拳击课",666,"每周三、周五","2个月","基础拳击课基础拳击课基础拳击课基础拳击课基础拳击课基础拳击课基础拳击课基础拳击课");
+        courseItemList.add(courseItem2);
+        CourseItem courseItem3 = new CourseItem(R.drawable.gtm_item_pic,"基础拳击课",666,"每周三、周五","2个月","基础拳击课基础拳击课基础拳击课基础拳击课基础拳击课基础拳击课基础拳击课基础拳击课");
+        courseItemList.add(courseItem3);
+        CourseItem courseItem4 = new CourseItem(R.drawable.gtm_item_pic,"基础拳击课",666,"每周三、周五","2个月","基础拳击课基础拳击课基础拳击课基础拳击课基础拳击课基础拳击课基础拳击课基础拳击课");
+        courseItemList.add(courseItem4);
     }
 }

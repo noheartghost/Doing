@@ -30,8 +30,6 @@ public class ImageButtonCustom extends FrameLayout {
         LayoutInflater.from(context).inflate(R.layout.imagebutton_custom, this);
         imageView = findViewById(R.id.image_id);
         textView = findViewById(R.id.text_id);
-        //imageView.setOnClickListener(this);
-        //textView.setOnClickListener(this);
 
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ImageButtonCustom);
         setText(typedArray.getString(R.styleable.ImageButtonCustom_text));

@@ -6,8 +6,10 @@
     android:layout_height="match_parent"
     tools:context="app.doing.com.doing.handpick.GymListActivity">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="健身场馆list页"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_gym"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
 </android.support.constraint.ConstraintLayout>

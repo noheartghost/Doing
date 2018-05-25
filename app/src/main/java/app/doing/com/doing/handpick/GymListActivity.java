@@ -2,6 +2,7 @@ package app.doing.com.doing.handpick;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -26,7 +27,7 @@ public class GymListActivity extends Activity {
 
         getGymItemList();
         RecyclerView recyclerView = findViewById(R.id.recycler_gym);
-        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
+        GridLayoutManager layoutManager = new GridLayoutManager(this.getApplication(),2);
         recyclerView.setLayoutManager(layoutManager);
 
         GymItemAdapter gymItemAdapter = new GymItemAdapter(gymItemList);

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ImageButtonCustom">
+        <attr name="image" format="reference"></attr>
+        <attr name="text" format="string"></attr>
+        <attr name="index" format="integer"></attr>
+    </declare-styleable>
+
+
+</resources>

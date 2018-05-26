@@ -18,6 +18,11 @@ tools:context="app.doing.com.doing.MainActivity">
     app:layout_constraintBottom_toTopOf="@+id/handpick_text">
 </FrameLayout>
 
+<app.doing.com.doing.ViewPagerClass
+    android:id="@+id/viewPager"
+    android:layout_width="match_parent"
+    android:layout_height="200dp">
+</app.doing.com.doing.ViewPagerClass>
 
 
 <TextView

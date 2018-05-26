@@ -5,9 +5,13 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import android.view.View;
 import android.view.ViewConfiguration;
 import android.widget.FrameLayout;
+import android.view.View;
+import android.widget.ImageView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import app.doing.com.doing.find.FindFragment;
 import app.doing.com.doing.handpick.HandpickFragment;
@@ -33,6 +37,9 @@ public class MainActivity extends Activity implements View.OnClickListener,View.
     //在被判定为滚动之前用户手指可以移动的最大值
     private int touchSlop;
 
+    private ViewPagerClass viewPager;
+    private List<View> views;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +49,11 @@ public class MainActivity extends Activity implements View.OnClickListener,View.
         initViews();
         fragmentManager = getFragmentManager();
         setTabSelection(0);
+      
+        //初始化Banner
+        viewPager = findViewById(R.id.viewPager);
+        initBanner();
+        viewPager.setViewPagerViews(views);
     }
 
     private void initViews(){
@@ -57,6 +69,23 @@ public class MainActivity extends Activity implements View.OnClickListener,View.
         findText.setOnClickListener(this);
         momentText.setOnClickListener(this);
         meText.setOnClickListener(this);
+        
+    }
+    //定义轮播图片
+    private void initBanner(){
+        views = new ArrayList<>();
+        ImageView imageView1 = new ImageView(getApplicationContext()) ;
+        ImageView imageView2 = new ImageView(getApplicationContext());
+        ImageView imageView3 = new ImageView(getApplicationContext());
+        ImageView imageView4 = new ImageView(getApplicationContext());
+        imageView1.setBackgroundResource(R.drawable.gym1);
+        views.add(imageView1);
+        imageView2.setBackgroundResource(R.drawable.gym2);
+        views.add(imageView2);
+        imageView3.setBackgroundResource(R.drawable.gym3);
+        views.add(imageView3);
+        imageView4.setBackgroundResource(R.drawable.gym4);
+        views.add(imageView4);
     }
 
     @Override

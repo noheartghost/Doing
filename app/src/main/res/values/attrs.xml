@@ -6,5 +6,8 @@
         <attr name="index" format="integer"></attr>
     </declare-styleable>
 
-
+    <declare-styleable name="SubtitleCustom">
+        <attr name="title" format="string"></attr>
+        <attr name="sub_index" format="integer"></attr>
+    </declare-styleable>
 </resources>

@@ -37,8 +37,7 @@ public class MainActivity extends Activity implements View.OnClickListener,View.
     //在被判定为滚动之前用户手指可以移动的最大值
     private int touchSlop;
 
-    private ViewPagerClass viewPager;
-    private List<View> views;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,10 +49,7 @@ public class MainActivity extends Activity implements View.OnClickListener,View.
         fragmentManager = getFragmentManager();
         setTabSelection(0);
       
-        //初始化Banner
-        viewPager = findViewById(R.id.viewPager);
-        initBanner();
-        viewPager.setViewPagerViews(views);
+
     }
 
     private void initViews(){
@@ -71,22 +67,7 @@ public class MainActivity extends Activity implements View.OnClickListener,View.
         meText.setOnClickListener(this);
         
     }
-    //定义轮播图片
-    private void initBanner(){
-        views = new ArrayList<>();
-        ImageView imageView1 = new ImageView(getApplicationContext()) ;
-        ImageView imageView2 = new ImageView(getApplicationContext());
-        ImageView imageView3 = new ImageView(getApplicationContext());
-        ImageView imageView4 = new ImageView(getApplicationContext());
-        imageView1.setBackgroundResource(R.drawable.gym1);
-        views.add(imageView1);
-        imageView2.setBackgroundResource(R.drawable.gym2);
-        views.add(imageView2);
-        imageView3.setBackgroundResource(R.drawable.gym3);
-        views.add(imageView3);
-        imageView4.setBackgroundResource(R.drawable.gym4);
-        views.add(imageView4);
-    }
+
 
     @Override
     public void onClick(View v) {

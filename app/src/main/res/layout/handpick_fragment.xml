@@ -10,6 +10,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <app.doing.com.doing.ViewPagerClass
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+        </app.doing.com.doing.ViewPagerClass>
+
+
         <app.doing.com.doing.customView.ImageButtonCustom
             android:id="@+id/gym_image"
             android:layout_width="0dp"
@@ -19,6 +26,7 @@
             app:index="0"
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintTop_toBottomOf="@id/viewPager"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@+id/course_image"
             app:text="场馆" />
@@ -31,6 +39,7 @@
             app:image="@drawable/course"
             app:index="1"
             app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintTop_toBottomOf="@id/viewPager"
             app:layout_constraintLeft_toRightOf="@id/gym_image"
             app:layout_constraintRight_toLeftOf="@+id/coach_image"
             app:text="课程" />
@@ -44,10 +53,11 @@
             app:image="@drawable/coaching"
             app:index="2"
             app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintTop_toBottomOf="@id/viewPager"
             app:layout_constraintLeft_toRightOf="@id/course_image"
             app:layout_constraintRight_toRightOf="parent"
-            app:text="教练" />
-            <!--app:layout_constraintBottom_toTopOf="@+id/handpick_test_title"-->
+            app:text="教练"
+            app:layout_constraintBottom_toTopOf="@+id/handpick_test_title"/>
 
 
         <app.doing.com.doing.customView.SubtitleCustom

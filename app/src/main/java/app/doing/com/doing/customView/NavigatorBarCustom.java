@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,14 +18,14 @@ import app.doing.com.doing.R;
  * Created by cherry on 18-5-30.
  */
 
-public class NavigatorBarCustom extends FrameLayout{
+public class NavigatorBarCustom extends ConstraintLayout{
     private ImageButton image_left;
     private ImageButton image_right;
     private TextView text_title;
 
     public NavigatorBarCustom(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-
+        this.setPadding(20,20,20,20);
         initView(context);
         initType(context,attrs);
     }

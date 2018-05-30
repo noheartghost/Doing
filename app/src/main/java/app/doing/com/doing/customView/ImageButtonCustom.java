@@ -3,6 +3,7 @@ package app.doing.com.doing.customView;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,7 +21,7 @@ import app.doing.com.doing.R;
  * Created by cherry on 18-5-22.
  */
 
-public class ImageButtonCustom extends FrameLayout {
+public class ImageButtonCustom extends ConstraintLayout {
     private ImageView imageView;
     private TextView textView;
     private int index;
@@ -28,6 +29,8 @@ public class ImageButtonCustom extends FrameLayout {
     public ImageButtonCustom(@NonNull Context context, AttributeSet attrs) {
         super(context, attrs);
         LayoutInflater.from(context).inflate(R.layout.imagebutton_custom, this);
+        this.setPadding(0,18,0,0);
+        
         imageView = findViewById(R.id.image_id);
         textView = findViewById(R.id.text_id);
 

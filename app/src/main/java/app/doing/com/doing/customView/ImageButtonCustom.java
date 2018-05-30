@@ -35,7 +35,7 @@ public class ImageButtonCustom extends FrameLayout {
         setText(typedArray.getString(R.styleable.ImageButtonCustom_text));
         setImage(typedArray.getResourceId(R.styleable.ImageButtonCustom_image, -1));
         index = typedArray.getInteger(R.styleable.ImageButtonCustom_index, 0);
-
+        typedArray.recycle();
     }
 
     public void setText(String text){

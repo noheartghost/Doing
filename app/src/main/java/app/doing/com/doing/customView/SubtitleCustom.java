@@ -30,6 +30,7 @@ public class SubtitleCustom extends FrameLayout {
 
         setText(typedArray.getString(R.styleable.SubtitleCustom_title));
         index = typedArray.getInteger(R.styleable.SubtitleCustom_sub_index, 0);
+        typedArray.recycle();
     }
 
     public void setText(String text){

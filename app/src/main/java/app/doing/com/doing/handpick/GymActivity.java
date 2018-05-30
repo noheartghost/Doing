@@ -3,11 +3,7 @@ package app.doing.com.doing.handpick;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,14 +12,14 @@ import app.doing.com.doing.R;
 import app.doing.com.doing.handpick.adapter.GymItemAdapter;
 import app.doing.com.doing.handpick.item.GymItem;
 
-public class GymListActivity extends Activity {
+public class GymActivity extends Activity {
 
     private List<GymItem> gymItemList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_gym_list);
+        setContentView(R.layout.activity_gym);
 
         getGymItemList();
         RecyclerView recyclerView = findViewById(R.id.recycler_gym);

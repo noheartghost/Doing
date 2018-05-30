@@ -38,10 +38,10 @@
             android:name=".handpick.GymActivity"
             android:launchMode="singleTask" />
         <activity
-            android:name=".handpick.CourseListActivity"
+            android:name=".handpick.CourseActivity"
             android:launchMode="singleTask"/>
         <activity
-            android:name=".handpick.CoachListActivity"
+            android:name=".handpick.CoachActivity"
             android:launchMode="singleTask"></activity>
     </application>
 

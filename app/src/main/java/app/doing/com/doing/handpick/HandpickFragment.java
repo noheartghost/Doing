@@ -134,11 +134,11 @@ public class HandpickFragment extends Fragment implements View.OnClickListener{
                 startActivity(intent);
                 break;
             case R.id.course_image:
-                intent = new Intent(getActivity(),CourseListActivity.class);
+                intent = new Intent(getActivity(),CourseActivity.class);
                 startActivity(intent);
                 break;
             case R.id.coach_image:
-                intent = new Intent(getActivity(),CoachListActivity.class);
+                intent = new Intent(getActivity(),CoachActivity.class);
                 startActivity(intent);
                 break;
             default:

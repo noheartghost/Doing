@@ -2,20 +2,20 @@ package app.doing.com.doing.handpick;
 
 import android.app.Fragment;
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import app.doing.com.doing.R;
+import app.doing.com.doing.ViewPagerClass;
 import app.doing.com.doing.customView.ImageButtonCustom;
 import app.doing.com.doing.handpick.adapter.CoachItemAdapter;
 import app.doing.com.doing.handpick.adapter.CourseItemAdapter;
@@ -33,6 +33,8 @@ public class HandpickFragment extends Fragment implements View.OnClickListener{
     private ImageButtonCustom gym_ibc;
     private ImageButtonCustom course_ibc;
     private ImageButtonCustom coach_ibc;
+    private ViewPagerClass viewPager;
+    private List<View> views;
 
     //展示的4个精选场馆
     private List<GymItem> gymItemList = new ArrayList<>();
@@ -52,6 +54,11 @@ public class HandpickFragment extends Fragment implements View.OnClickListener{
     }
 
     private void initViews(View view){
+        //初始化Banner
+        viewPager = view.findViewById(R.id.viewPager);
+        initBanner();
+        viewPager.setViewPagerViews(views);
+
         gym_ibc = view.findViewById(R.id.gym_image);
         course_ibc = view.findViewById(R.id.course_image);
         coach_ibc = view.findViewById(R.id.coach_image);
@@ -100,6 +107,22 @@ public class HandpickFragment extends Fragment implements View.OnClickListener{
 
     }
 
+    //定义轮播图片
+    private void initBanner(){
+        views = new ArrayList<>();
+        ImageView imageView1 = new ImageView(getActivity().getApplicationContext()) ;
+        ImageView imageView2 = new ImageView(getActivity().getApplicationContext());
+        ImageView imageView3 = new ImageView(getActivity().getApplicationContext());
+        ImageView imageView4 = new ImageView(getActivity().getApplicationContext());
+        imageView1.setBackgroundResource(R.drawable.gym1);
+        views.add(imageView1);
+        imageView2.setBackgroundResource(R.drawable.gym2);
+        views.add(imageView2);
+        imageView3.setBackgroundResource(R.drawable.gym3);
+        views.add(imageView3);
+        imageView4.setBackgroundResource(R.drawable.gym4);
+        views.add(imageView4);
+    }
 
     @Override
     public void onClick(View v) {
@@ -107,15 +130,15 @@ public class HandpickFragment extends Fragment implements View.OnClickListener{
         Intent intent;
         switch (v.getId()){
             case R.id.gym_image:
-                intent = new Intent(getActivity(),GymListActivity.class);
+                intent = new Intent(getActivity(),GymActivity.class);
                 startActivity(intent);
                 break;
             case R.id.course_image:
-                intent = new Intent(getActivity(),CourseListActivity.class);
+                intent = new Intent(getActivity(),CourseActivity.class);
                 startActivity(intent);
                 break;
             case R.id.coach_image:
-                intent = new Intent(getActivity(),CoachListActivity.class);
+                intent = new Intent(getActivity(),CoachActivity.class);
                 startActivity(intent);
                 break;
             default:

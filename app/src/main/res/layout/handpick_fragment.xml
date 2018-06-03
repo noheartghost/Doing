@@ -10,6 +10,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <app.doing.com.doing.ViewPagerClass
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+        </app.doing.com.doing.ViewPagerClass>
+
+
         <app.doing.com.doing.customView.ImageButtonCustom
             android:id="@+id/gym_image"
             android:layout_width="0dp"
@@ -19,6 +26,7 @@
             app:index="0"
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintTop_toBottomOf="@id/viewPager"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@+id/course_image"
             app:text="场馆" />
@@ -31,6 +39,7 @@
             app:image="@drawable/course"
             app:index="1"
             app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintTop_toBottomOf="@id/viewPager"
             app:layout_constraintLeft_toRightOf="@id/gym_image"
             app:layout_constraintRight_toLeftOf="@+id/coach_image"
             app:text="课程" />
@@ -44,40 +53,101 @@
             app:image="@drawable/coaching"
             app:index="2"
             app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintTop_toBottomOf="@id/viewPager"
             app:layout_constraintLeft_toRightOf="@id/course_image"
             app:layout_constraintRight_toRightOf="parent"
-            app:text="教练" />
+            app:text="教练"
+            app:layout_constraintBottom_toTopOf="@+id/handpick_test_title"/>
+
+
+        <app.doing.com.doing.customView.SubtitleCustom
+            android:id="@+id/handpick_test_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="精选测评"
+            app:sub_index="0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/coach_image"
+            app:layout_constraintBottom_toTopOf="@+id/handpick_gym_title">
+
+        </app.doing.com.doing.customView.SubtitleCustom>
+
+        <app.doing.com.doing.customView.SubtitleCustom
+            android:id="@+id/handpick_gym_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="精选场馆"
+            app:sub_index="1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/handpick_test_title"
+            app:layout_constraintBottom_toTopOf="@+id/handpick_gym_list">
+
+        </app.doing.com.doing.customView.SubtitleCustom>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/handpick_gym_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_marginVertical="10px"
+            android:layout_marginHorizontal="100px"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/coach_image"></android.support.v7.widget.RecyclerView>
+            app:layout_constraintTop_toBottomOf="@id/handpick_gym_title"
+            app:layout_constraintBottom_toTopOf="@+id/handpick_coach_title">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <app.doing.com.doing.customView.SubtitleCustom
+            android:id="@+id/handpick_coach_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="明星教练"
+            app:sub_index="2"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/handpick_gym_list"
+            app:layout_constraintBottom_toTopOf="@+id/handpick_coach_list">
+
+        </app.doing.com.doing.customView.SubtitleCustom>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/handpick_coach_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginVertical="10px"
+            android:layout_marginHorizontal="44px"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/handpick_gym_list">
+            app:layout_constraintTop_toBottomOf="@id/handpick_coach_title"
+            app:layout_constraintBottom_toTopOf="@+id/handpick_course_title">
 
         </android.support.v7.widget.RecyclerView>
+
+        <app.doing.com.doing.customView.SubtitleCustom
+            android:id="@+id/handpick_course_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="最火团课"
+            app:sub_index="3"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/handpick_coach_list"
+            app:layout_constraintBottom_toTopOf="@+id/handpick_course_list">
+
+        </app.doing.com.doing.customView.SubtitleCustom>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/handpick_course_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginVertical="10px"
+            android:layout_marginHorizontal="44px"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/handpick_coach_list">
+            app:layout_constraintTop_toBottomOf="@id/handpick_course_title"
+            app:layout_constraintBottom_toBottomOf="parent">
 
         </android.support.v7.widget.RecyclerView>
 

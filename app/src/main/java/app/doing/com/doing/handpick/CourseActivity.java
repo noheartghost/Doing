@@ -5,11 +5,11 @@ import android.os.Bundle;
 
 import app.doing.com.doing.R;
 
-public class CourseListActivity extends Activity {
+public class CourseActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_course_list);
+        setContentView(R.layout.activity_course);
     }
 }

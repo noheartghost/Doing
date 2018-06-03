@@ -5,11 +5,11 @@ import android.os.Bundle;
 
 import app.doing.com.doing.R;
 
-public class CoachListActivity extends Activity {
+public class CoachActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_coach_list);
+        setContentView(R.layout.activity_coach);
     }
 }

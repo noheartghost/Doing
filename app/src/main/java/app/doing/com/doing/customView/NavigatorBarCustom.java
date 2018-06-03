@@ -25,7 +25,7 @@ public class NavigatorBarCustom extends ConstraintLayout{
 
     public NavigatorBarCustom(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        this.setPadding(20,20,20,20);
+        this.setPadding(20,20,20,0);
         initView(context);
         initType(context,attrs);
     }

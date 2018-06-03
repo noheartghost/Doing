@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 import app.doing.com.doing.R;
@@ -21,6 +23,7 @@ import app.doing.com.doing.handpick.item.GymItem;
 
 public class GymItemAdapter extends RecyclerView.Adapter<GymItemAdapter.ViewHolder> {
     private List<GymItem> gymList;
+    private Context context;
 
     static class ViewHolder extends RecyclerView.ViewHolder{
         ImageView gymItemImage;
@@ -41,7 +44,8 @@ public class GymItemAdapter extends RecyclerView.Adapter<GymItemAdapter.ViewHold
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
+        context = parent.getContext();
+        View view = LayoutInflater.from(context)
                 .inflate(R.layout.gym_item,parent,false);
         ViewHolder holder = new ViewHolder(view);
         return holder;
@@ -50,7 +54,8 @@ public class GymItemAdapter extends RecyclerView.Adapter<GymItemAdapter.ViewHold
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         GymItem gymItem = gymList.get(position);
-        holder.gymItemImage.setImageResource(gymItem.getImageId());
+        //使用Glide加载图片，当前使用本地资源代替
+        Glide.with(context).load(gymItem.getImageId()).into(holder.gymItemImage);
         holder.gymItemName.setText(gymItem.getName());
         holder.gymItemDescription.setText(gymItem.getDescription());
     }

@@ -2,6 +2,7 @@ package app.doing.com.doing.customView;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.util.AttributeSet;
@@ -30,13 +31,13 @@ public class ImageButtonCustom extends ConstraintLayout {
         super(context, attrs);
         LayoutInflater.from(context).inflate(R.layout.imagebutton_custom, this);
         this.setPadding(0,18,0,0);
-        
+
         imageView = findViewById(R.id.image_id);
         textView = findViewById(R.id.text_id);
 
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ImageButtonCustom);
         setText(typedArray.getString(R.styleable.ImageButtonCustom_text));
-        setImage(typedArray.getResourceId(R.styleable.ImageButtonCustom_image, -1));
+        setImage(typedArray.getResourceId(R.styleable.ImageButtonCustom_image, -1),context);
         index = typedArray.getInteger(R.styleable.ImageButtonCustom_index, 0);
         typedArray.recycle();
     }
@@ -45,7 +46,7 @@ public class ImageButtonCustom extends ConstraintLayout {
         textView.setText(text);
     }
 
-    public void setImage(int sourceId){
+    public void setImage(int sourceId,Context context){
         imageView.setBackgroundResource(sourceId);
     }
 

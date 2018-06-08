@@ -23,12 +23,28 @@
 
         </app.doing.com.doing.customView.NavigatorBarCustom>
 
+        <android.support.v4.view.ViewPager
+            android:id="@+id/gym_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:clipToPadding="false"
+            android:overScrollMode="never"
+            app:layout_constraintTop_toBottomOf="@id/gym_navigator_bar"
+            android:paddingLeft="@dimen/banner_padding"
+            android:paddingRight="@dimen/banner_padding"
+            android:paddingStart="@dimen/banner_padding"
+            android:paddingEnd="@dimen/banner_padding"
+            ></android.support.v4.view.ViewPager>
+
+
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_gym"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="14dp"
-            app:layout_constraintTop_toBottomOf="@id/gym_navigator_bar">
+            app:layout_constraintTop_toBottomOf="@id/gym_viewpager"
+            >
 
         </android.support.v7.widget.RecyclerView>
     </android.support.constraint.ConstraintLayout>

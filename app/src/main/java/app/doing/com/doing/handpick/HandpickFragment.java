@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -178,5 +179,11 @@ public class HandpickFragment extends Fragment implements View.OnClickListener{
         courseItemList.add(courseItem3);
         CourseItem courseItem4 = new CourseItem(R.drawable.gtm_item_pic,"基础拳击课",666,"每周三、周五","2个月","基础拳击课基础拳击课基础拳击课基础拳击课基础拳击课基础拳击课基础拳击课基础拳击课");
         courseItemList.add(courseItem4);
+    }
+
+    @Override
+    public void onStop() {
+        viewPager.stop();
+        super.onStop();
     }
 }

@@ -19,4 +19,6 @@
         <attr name="right_image" format="reference"></attr>
         <attr name="text_title" format="string"></attr>
     </declare-styleable>
+
+
 </resources>

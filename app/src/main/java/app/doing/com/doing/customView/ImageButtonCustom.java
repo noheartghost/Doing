@@ -37,7 +37,7 @@ public class ImageButtonCustom extends ConstraintLayout {
 
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ImageButtonCustom);
         setText(typedArray.getString(R.styleable.ImageButtonCustom_text));
-        setImage(typedArray.getResourceId(R.styleable.ImageButtonCustom_image, -1),context);
+        setImage(typedArray.getResourceId(R.styleable.ImageButtonCustom_image, -1));
         index = typedArray.getInteger(R.styleable.ImageButtonCustom_index, 0);
         typedArray.recycle();
     }
@@ -46,7 +46,7 @@ public class ImageButtonCustom extends ConstraintLayout {
         textView.setText(text);
     }
 
-    public void setImage(int sourceId,Context context){
+    public void setImage(int sourceId){
         imageView.setBackgroundResource(sourceId);
     }
 

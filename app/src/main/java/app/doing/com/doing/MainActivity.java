@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import java.util.ArrayList;
 import java.util.List;
 
+import app.doing.com.doing.customView.ImageButtonCustom;
 import app.doing.com.doing.find.FindFragment;
 import app.doing.com.doing.handpick.HandpickFragment;
 import app.doing.com.doing.me.MeFragment;
@@ -24,10 +25,10 @@ public class MainActivity extends Activity implements View.OnClickListener,View.
     private MomentFragment momentFragment;
     private MeFragment meFragment;
 
-    private View handpickText;
-    private View findText;
-    private View momentText;
-    private View meText;
+    private ImageButtonCustom handpickText;
+    private ImageButtonCustom findText;
+    private ImageButtonCustom momentText;
+    private ImageButtonCustom meText;
 
     /*对Fragment进行管理*/
     private FragmentManager fragmentManager;
@@ -89,13 +90,22 @@ public class MainActivity extends Activity implements View.OnClickListener,View.
         }
     }
 
+    private void resetTabIcon(){
+        handpickText.setImage(R.drawable.handpick_icon);
+        findText.setImage(R.drawable.find_icon);
+        momentText.setImage(R.drawable.moment_icon);
+        meText.setImage(R.drawable.me_icon);
+    }
+
     /*根据传入的index设置显示的tab*/
     private void setTabSelection(int index){
+        resetTabIcon();
         //每次切换fragment时，开启一个新的fragment事物
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         hideFragments(transaction);
         switch(index){
             case 0:
+                handpickText.setImage(R.drawable.handpick_selected_icon);
                 if(handpickFragment == null){
                     handpickFragment = new HandpickFragment();
 
@@ -105,6 +115,7 @@ public class MainActivity extends Activity implements View.OnClickListener,View.
                 }
                 break;
             case 1:
+                findText.setImage(R.drawable.find_selected_icon);
                 if(findFragment == null){
                     findFragment = new FindFragment();
                     transaction.add(R.id.content,findFragment);
@@ -113,6 +124,7 @@ public class MainActivity extends Activity implements View.OnClickListener,View.
                 }
                 break;
             case 2:
+                momentText.setImage(R.drawable.moment_selected_icon);
                 if(momentFragment == null){
                     momentFragment = new MomentFragment();
                     transaction.add(R.id.content,momentFragment);
@@ -122,6 +134,7 @@ public class MainActivity extends Activity implements View.OnClickListener,View.
                 break;
             case 3:
             default:
+                meText.setImage(R.drawable.me_selected_icon);
                 if(meFragment == null){
                     meFragment = new MeFragment();
                     transaction.add(R.id.content,meFragment);

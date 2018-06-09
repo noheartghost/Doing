@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -12,13 +13,15 @@ import java.util.List;
 
 import app.doing.com.doing.R;
 import app.doing.com.doing.handpick.adapter.GymItemAdapter;
+import app.doing.com.doing.handpick.adapter.GymListItemAdapter;
 import app.doing.com.doing.handpick.item.GymItem;
+import app.doing.com.doing.handpick.item.GymListItem;
 import app.doing.com.doing.utils.SliderBanner.CardBanner;
 
 
 public class GymActivity extends AppCompatActivity {
 
-    private List<GymItem> gymItemList = new ArrayList<>();
+    private List<GymListItem> gymListItemList = new ArrayList<>();
     private List<Integer> gymBannerList = new ArrayList<>();
     private ViewPager gymViewPager;
     private CardBanner cardBanner;
@@ -31,21 +34,16 @@ public class GymActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gym);
 
-        gymViewPager = findViewById(R.id.gym_viewpager);
-        initGymBanner();
-
+        initBanner();
         getGymItemList();
-        recyclerView = findViewById(R.id.recycler_gym);
-        GridLayoutManager layoutManager = new GridLayoutManager(this.getApplication(),2);
-        recyclerView.setLayoutManager(layoutManager);
 
-        GymItemAdapter gymItemAdapter = new GymItemAdapter(gymItemList);
-        recyclerView.setAdapter(gymItemAdapter);
     }
 
 
 
-    private void initGymBanner(){
+    private void initBanner(){
+        gymViewPager = findViewById(R.id.gym_viewpager);
+
         gymBannerList.add(R.drawable.gtm_item_pic);
         gymBannerList.add(R.drawable.pexels_photo);
         gymBannerList.add(R.drawable.gtm_item_pic);
@@ -65,13 +63,20 @@ public class GymActivity extends AppCompatActivity {
 
     private void getGymItemList(){
         for(int i=0;i<5;i++){
-            GymItem gymItem1 = new GymItem(R.drawable.gtm_item_pic,"宝力豪健身","特别好");
-            gymItemList.add(gymItem1);
-            GymItem gymItem2 = new GymItem(R.drawable.gtm_item_pic,"宝力豪健身","特别好特别好特别好特别好特别好特别好特别好特别好特别好特别好");
-            gymItemList.add(gymItem2);
-            GymItem gymItem3 = new GymItem(R.drawable.gtm_item_pic,"宝力豪健身","特别好特别好特别好特别好特别好特别好特别好特别好特别好特别好特别好特别好特别好特别好特别好特别好特别好特别好特别好特别好");
-            gymItemList.add(gymItem3);
+            GymListItem gymItem1 = new GymListItem(R.drawable.gtm_item_pic,"宝力豪健身","大悦城南区","天津市津南区海河教育园区同砚路38号",(float) 4.5,6,500);
+            gymListItemList.add(gymItem1);
+            GymListItem gymItem2 = new GymListItem(R.drawable.gtm_item_pic,"宝力豪健身","大悦城南区","天津市津南区海河教育园区同砚路38号",(float) 4.5,6,500);
+            gymListItemList.add(gymItem2);
+            GymListItem gymItem3 = new GymListItem(R.drawable.gtm_item_pic,"宝力豪健身","大悦城南区","天津市津南区海河教育园区同砚路38号",(float) 4.5,6,500);
+            gymListItemList.add(gymItem3);
         }
+
+        recyclerView = findViewById(R.id.recycler_gym);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+        GymListItemAdapter gymListItemAdapter = new GymListItemAdapter(gymListItemList);
+        recyclerView.setAdapter(gymListItemAdapter);
 
     }
 

@@ -12,8 +12,6 @@
         <item name="android:progressDrawable">@drawable/heart_rating_bar</item>
         <item name="android:minHeight">16dip</item>
         <item name="android:maxHeight">16dip</item>
-        <item name="android:minWidth">20dip</item>
-        <item name="android:maxWidth">20dip</item>
     </style>
 
 

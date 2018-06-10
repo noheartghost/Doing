@@ -4,41 +4,63 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import app.doing.com.doing.R;
-import app.doing.com.doing.handpick.adapter.GymItemAdapter;
+import app.doing.com.doing.customView.SelectTabCustom;
 import app.doing.com.doing.handpick.adapter.GymListItemAdapter;
-import app.doing.com.doing.handpick.item.GymItem;
 import app.doing.com.doing.handpick.item.GymListItem;
 import app.doing.com.doing.utils.SliderBanner.CardBanner;
 
 
-public class GymActivity extends AppCompatActivity {
+public class GymActivity extends AppCompatActivity implements View.OnClickListener{
+    private SelectTabCustom  gymTabNear;
+    private SelectTabCustom gymTabType;
+    private SelectTabCustom gymTabScore;
+    private SelectTabCustom gymTabSelect;
 
     private List<GymListItem> gymListItemList = new ArrayList<>();
     private List<Integer> gymBannerList = new ArrayList<>();
     private ViewPager gymViewPager;
     private CardBanner cardBanner;
     private RecyclerView recyclerView;
-    private Handler handler;
+    private Handler                                                                                   handler;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_gym);
 
         initBanner();
         getGymItemList();
-
+        initView();
     }
 
+    private void initView(){
+        gymTabNear = findViewById(R.id.gym_tab_near);
+        gymTabType = findViewById(R.id.gym_tab_type);
+        gymTabScore = findViewById(R.id.gym_tab_score);
+        gymTabSelect = findViewById(R.id.gym_tab_select);
+
+        gymTabNear.setOnClickListener(this);
+        gymTabType.setOnClickListener(this);
+        gymTabScore.setOnClickListener(this);
+        gymTabSelect.setOnClickListener(this);
+    }
+
+    private void tabReset(){
+        gymTabNear.setSelected(false);
+        gymTabType.setSelected(false);
+        gymTabScore.setSelected(false);
+        gymTabSelect.setSelected(false);
+    }
 
 
     private void initBanner(){
@@ -84,5 +106,26 @@ public class GymActivity extends AppCompatActivity {
     protected void onStop() {
         cardBanner.setIsAlive(false);
         super.onStop();
+    }
+
+    @Override
+    public void onClick(View v) {
+        tabReset();
+        switch (v.getId()){
+            case R.id.gym_tab_near:
+                gymTabNear.setSelected(true);
+                break;
+            case R.id.gym_tab_type:
+                gymTabType.setSelected(true);
+                break;
+            case R.id.gym_tab_score:
+                gymTabScore.setSelected(true);
+                break;
+            case R.id.gym_tab_select:
+                gymTabSelect.setSelected(true);
+                break;
+                default:
+                    break;
+        }
     }
 }

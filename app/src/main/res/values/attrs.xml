@@ -20,5 +20,9 @@
         <attr name="text_title" format="string"></attr>
     </declare-styleable>
 
+    <declare-styleable name="SelectTabCustom">
+        <attr name="select_title" format="string"></attr>
+        <attr name="select_selected" format="boolean"></attr>
+    </declare-styleable>
 
 </resources>

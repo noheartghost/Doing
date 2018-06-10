@@ -8,10 +8,6 @@ import android.view.MotionEvent;
 import android.view.ViewConfiguration;
 import android.widget.FrameLayout;
 import android.view.View;
-import android.widget.ImageView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import app.doing.com.doing.customView.ImageButtonCustom;
 import app.doing.com.doing.find.FindFragment;

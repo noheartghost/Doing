@@ -53,6 +53,7 @@ public class HandpickFragment extends Fragment implements View.OnClickListener{
     }
 
     private void initViews(View view){
+
         gym_ibc = view.findViewById(R.id.gym_image);
         course_ibc = view.findViewById(R.id.course_image);
         coach_ibc = view.findViewById(R.id.coach_image);
@@ -140,22 +141,21 @@ public class HandpickFragment extends Fragment implements View.OnClickListener{
         views2.add(imageView8);
     }
 
-
     @Override
     public void onClick(View v) {
         //判断点击的按钮
         Intent intent;
         switch (v.getId()){
             case R.id.gym_image:
-                intent = new Intent(getActivity(),GymListActivity.class);
+                intent = new Intent(getActivity(),GymActivity.class);
                 startActivity(intent);
                 break;
             case R.id.course_image:
-                intent = new Intent(getActivity(),CourseListActivity.class);
+                intent = new Intent(getActivity(),CourseActivity.class);
                 startActivity(intent);
                 break;
             case R.id.coach_image:
-                intent = new Intent(getActivity(),CoachListActivity.class);
+                intent = new Intent(getActivity(),CoachActivity.class);
                 startActivity(intent);
                 break;
             default:
@@ -195,5 +195,12 @@ public class HandpickFragment extends Fragment implements View.OnClickListener{
         courseItemList.add(courseItem3);
         CourseItem courseItem4 = new CourseItem(R.drawable.gtm_item_pic,"基础拳击课",666,"每周三、周五","2个月","基础拳击课基础拳击课基础拳击课基础拳击课基础拳击课基础拳击课基础拳击课基础拳击课");
         courseItemList.add(courseItem4);
+    }
+
+    @Override
+    public void onStop() {
+        viewPager1.stop();
+        viewPager2.stop();
+        super.onStop();
     }
 }

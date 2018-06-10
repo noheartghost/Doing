@@ -3,5 +3,6 @@
 
     <dimen name="thumnail_default_width">500px</dimen>
     <dimen name="thumnail_default_height">400px</dimen>
+    <dimen name="banner_padding">80px</dimen>
 
 </resources>

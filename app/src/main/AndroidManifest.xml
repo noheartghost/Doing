@@ -35,13 +35,13 @@
         <activity android:name=".RegisterActivity" />
         //设置为SingleTask模式，整个应用程序中仅存在该活动的一个实例
         <activity
-            android:name=".handpick.GymListActivity"
+            android:name=".handpick.GymActivity"
             android:launchMode="singleTask" />
         <activity
-            android:name=".handpick.CourseListActivity"
+            android:name=".handpick.CourseActivity"
             android:launchMode="singleTask"/>
         <activity
-            android:name=".handpick.CoachListActivity"
+            android:name=".handpick.CoachActivity"
             android:launchMode="singleTask"></activity>
     </application>
 

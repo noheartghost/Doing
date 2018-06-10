@@ -6,5 +6,23 @@
         <attr name="index" format="integer"></attr>
     </declare-styleable>
 
+    <declare-styleable name="SubtitleCustom">
+        <attr name="title" format="string"></attr>
+        <attr name="sub_index" format="integer"></attr>
+    </declare-styleable>
+
+    <declare-styleable name="NavigatorBarCustom">
+        <attr name="left_visible" format="boolean"></attr>
+        <attr name="right_visible" format="boolean"></attr>
+        <attr name="text_visible" format="boolean"></attr>
+        <attr name="left_image" format="reference"></attr>
+        <attr name="right_image" format="reference"></attr>
+        <attr name="text_title" format="string"></attr>
+    </declare-styleable>
+
+    <declare-styleable name="SelectTabCustom">
+        <attr name="select_title" format="string"></attr>
+        <attr name="select_selected" format="boolean"></attr>
+    </declare-styleable>
 
 </resources>

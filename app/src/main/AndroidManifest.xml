@@ -46,11 +46,8 @@
             android:launchMode="singleTask" />
         <activity
             android:name=".handpick.PayActivity"
-            android:launchMode="singleTask">
-
-        </activity>
-
-
+            android:launchMode="singleTask"></activity>
+        <activity android:name=".handpick.ListActivity"></activity>
     </application>
 
 </manifest>

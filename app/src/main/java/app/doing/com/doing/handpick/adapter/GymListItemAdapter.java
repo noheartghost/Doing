@@ -15,14 +15,16 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 import app.doing.com.doing.R;
+import app.doing.com.doing.handpick.item.GymItem;
 import app.doing.com.doing.handpick.item.GymListItem;
+import app.doing.com.doing.handpick.item.ListItem;
 
 /**
  * Created by cherry on 18-6-9.
  */
 
-public class GymListItemAdapter extends RecyclerView.Adapter<GymListItemAdapter.ViewHolder>{
-    private List<GymListItem> gymListItemList;
+public class GymListItemAdapter extends RecyclerView.Adapter<GymListItemAdapter.ViewHolder> {
+    private List<ListItem> listItemList;
     private Context context;
 
 
@@ -51,8 +53,8 @@ public class GymListItemAdapter extends RecyclerView.Adapter<GymListItemAdapter.
         }
     }
 
-    public GymListItemAdapter(List<GymListItem> gymListItemList) {
-        this.gymListItemList = gymListItemList;
+    public GymListItemAdapter(List<ListItem> listItemList) {
+        this.listItemList = listItemList;
     }
 
     @Override
@@ -67,20 +69,24 @@ public class GymListItemAdapter extends RecyclerView.Adapter<GymListItemAdapter.
 
     @Override
     public void onBindViewHolder(GymListItemAdapter.ViewHolder holder, int position) {
-        GymListItem gymListItem = gymListItemList.get(position);
-        //使用Glide加载图片，当前使用本地资源代替
-        Glide.with(context).load(gymListItem.getImageId()).into(holder.gymImage);
-        holder.gymName.setText(gymListItem.getName());
-        holder.gymDistrict.setText("（"+gymListItem.getDistrict()+"）");
-        holder.gymAddress.setText(gymListItem.getAddress());
-        holder.gymRatingBar.setRating(gymListItem.getRating());
-        holder.gymRating.setText(""+gymListItem.getRating());
-        holder.gymViews.setText(""+gymListItem.getViews()+"条");
-        holder.gymDistance.setText(gymListItem.getDistance()+"m");
+        ListItem listItem = listItemList.get(position);
+        if(listItem instanceof GymListItem){
+            GymListItem gymListItem = (GymListItem) listItem;
+            //使用Glide加载图片，当前使用本地资源代替
+            Glide.with(context).load(gymListItem.getImageId()).into(holder.gymImage);
+            holder.gymName.setText(gymListItem.getName());
+            holder.gymDistrict.setText("（"+gymListItem.getDistrict()+"）");
+            holder.gymAddress.setText(gymListItem.getAddress());
+            holder.gymRatingBar.setRating(gymListItem.getRating());
+            holder.gymRating.setText(""+gymListItem.getRating());
+            holder.gymViews.setText(""+gymListItem.getViews()+"条");
+            holder.gymDistance.setText(gymListItem.getDistance()+"m");
+        }
+
     }
 
     @Override
     public int getItemCount() {
-        return gymListItemList.size();
+        return listItemList.size();
     }
 }

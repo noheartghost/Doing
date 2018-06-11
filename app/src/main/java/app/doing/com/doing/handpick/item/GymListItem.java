@@ -1,10 +1,12 @@
 package app.doing.com.doing.handpick.item;
 
+import android.app.LauncherActivity;
+
 /**
  * Created by cherry on 18-6-9.
  */
 
-public class GymListItem {
+public class GymListItem implements ListItem{
     private int imageId;
     private String name;
     private String district;

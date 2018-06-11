@@ -4,7 +4,7 @@ package app.doing.com.doing.handpick.item;
  * Created by cherry on 18-6-9.
  */
 
-public class CourseListItem {
+public class CourseListItem implements ListItem{
     private int imageId;
     private String name;
     private int persons;

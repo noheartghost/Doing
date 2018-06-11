@@ -126,23 +126,21 @@ public class HandpickFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         //判断点击的按钮
-        Intent intent;
+        Intent intent = new Intent(getActivity(),ListActivity.class);
         switch (v.getId()){
+            case R.id.coach_image:
+                intent.putExtra("indicator",0);
+                break;
             case R.id.gym_image:
-                intent = new Intent(getActivity(),GymActivity.class);
-                startActivity(intent);
+                intent.putExtra("indicator",1);
                 break;
             case R.id.course_image:
-                intent = new Intent(getActivity(),CourseActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.coach_image:
-                intent = new Intent(getActivity(),CoachActivity.class);
-                startActivity(intent);
+                intent.putExtra("indicator",2);
                 break;
             default:
                 break;
         }
+        startActivity(intent);
 
     }
 

@@ -20,8 +20,8 @@
     <View
         android:id="@+id/subtitle_line"
         android:layout_width="0dp"
-        android:layout_height="2dp"
-        android:background="@color/natural"
+        android:layout_height="1dp"
+        android:background="@color/colorGrey"
         android:layout_marginTop="20dp"
         app:layout_constraintLeft_toRightOf="@id/subtitle_guide_left"
         app:layout_constraintRight_toLeftOf="@id/subtitle_guide_right"

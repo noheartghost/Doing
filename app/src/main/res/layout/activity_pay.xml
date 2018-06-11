@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="app.doing.com.doing.handpick.PayActivity">
+
+    <TextView
+        android:id="@+id/pay_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="订单详情"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
+    <TextView
+        android:id="@+id/pay_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textSize="15sp"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintLeft_toLeftOf="@id/pay_title"
+        app:layout_constraintTop_toBottomOf="@id/pay_title"
+        />
+
+    <TextView
+        android:id="@+id/pay_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:lines="1"
+        android:textSize="11sp"
+        android:textColor="@color/colorSecondary"
+        app:layout_constraintLeft_toLeftOf="@id/pay_title"
+        app:layout_constraintTop_toBottomOf="@id/pay_name"/>
+
+    <ImageButton
+        android:id="@+id/pay_place"
+        android:layout_width="64px"
+        android:layout_height="64px"
+        android:background="@drawable/place_indicator_icon"
+        android:layout_marginRight="22dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/pay_name"
+        />
+
+    <TextView
+        android:id="@+id/pay_card_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimary"
+        android:layout_marginTop="20dp"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:text="单次健身卡"
+        app:layout_constraintLeft_toLeftOf="@id/pay_title"
+        app:layout_constraintTop_toBottomOf="@id/pay_address"/>
+
+
+    <app.doing.com.doing.customView.RecordItemCustom
+        android:id="@+id/record_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:record_name="日期"
+        app:record_content="2018/09/19"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pay_card_title"
+        app:layout_constraintBottom_toTopOf="@+id/record_person"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp">
+
+    </app.doing.com.doing.customView.RecordItemCustom>
+
+    <app.doing.com.doing.customView.RecordItemCustom
+        android:id="@+id/record_person"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:record_name="使用人"
+        app:record_content="TOM"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/record_date"
+        app:layout_constraintBottom_toTopOf="@+id/record_phone"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp">
+
+    </app.doing.com.doing.customView.RecordItemCustom>
+
+    <app.doing.com.doing.customView.RecordItemCustom
+        android:id="@+id/record_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:record_name="联系手机"
+        app:record_content="12345678901"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/record_person"
+        app:layout_constraintBottom_toTopOf="@+id/record_time"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp">
+
+    </app.doing.com.doing.customView.RecordItemCustom>
+
+    <app.doing.com.doing.customView.RecordItemCustom
+        android:id="@+id/record_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:record_name="预计到店"
+        app:record_content="18:00前"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/record_phone"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        >
+
+    </app.doing.com.doing.customView.RecordItemCustom>
+
+    <TextView
+        android:id="@+id/record_ticket_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="抵值券"
+        android:layout_marginTop="35dp"
+        android:textColor="@color/colorPrimary"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="@id/pay_title"
+        app:layout_constraintTop_toBottomOf="@id/record_time"
+        />
+
+    <ImageButton
+        android:id="@+id/record_more"
+        android:layout_width="64px"
+        android:layout_height="64px"
+        android:background="@drawable/more_icon"
+        app:layout_constraintRight_toRightOf="@id/pay_place"
+        app:layout_constraintBottom_toBottomOf="@id/record_ticket_title"
+        />
+
+    <View
+        android:id="@+id/record_gap1"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/colorGrey"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/record_ticket_title">
+
+    </View>
+
+    <LinearLayout
+        android:id="@+id/record_ticket_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintLeft_toLeftOf="@id/pay_title"
+        app:layout_constraintTop_toBottomOf="@id/record_gap1">
+
+        <TextView
+            android:id="@+id/record_ticket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:textSize="13sp"
+            android:layout_marginTop="10dp"
+            />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/record_gap2"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/colorGrey"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/record_ticket_list">
+
+    </View>
+
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/record_submit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/record_submit"
+        android:background="@drawable/border"
+        >
+
+        <TextView
+            android:id="@+id/record_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrice"
+            android:textSize="24sp"
+            android:layout_marginBottom="10dp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginLeft="20dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrice"
+            android:textSize="16sp"
+            android:text="¥"
+            android:textStyle="bold"
+            android:layout_marginBottom="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/record_price"
+            />
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:text="明细"
+               />
+
+            <ImageView
+                android:layout_width="16px"
+                android:layout_height="16px"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="11dp"
+                android:src="@drawable/up_icon"
+                />
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
+
+
+    </android.support.constraint.ConstraintLayout>
+    
+    
+    <TextView
+        android:id="@+id/record_submit"
+        android:layout_width="140dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/textLightPrimary"
+        android:text="提交订单"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+
+</android.support.constraint.ConstraintLayout>

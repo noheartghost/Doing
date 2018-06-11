@@ -25,4 +25,9 @@
         <attr name="select_selected" format="boolean"></attr>
     </declare-styleable>
 
+    <declare-styleable name="RecordItemCustom">
+        <attr name="record_name" format="string"></attr>
+        <attr name="record_content" format="string"></attr>
+    </declare-styleable>
+
 </resources>

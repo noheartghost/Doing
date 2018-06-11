@@ -57,7 +57,7 @@ public class SelectTabCustom extends ConstraintLayout {
             text.setTextColor(color);
             line.setBackgroundColor(color);
         }else{
-            text.setTextColor(getResources().getColor(R.color.natural));
+            text.setTextColor(getResources().getColor(R.color.colorGrey));
             line.setBackgroundColor(getResources().getColor(R.color.textDarkInvisible));
         }
     }

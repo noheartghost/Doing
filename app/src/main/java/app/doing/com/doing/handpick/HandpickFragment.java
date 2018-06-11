@@ -49,8 +49,6 @@ public class HandpickFragment extends Fragment implements View.OnClickListener{
         View handpickFragment = layoutInflater.inflate(R.layout.handpick_fragment,container,false);
         initViews(handpickFragment);
 
-
-
         return handpickFragment;
     }
 

@@ -18,6 +18,9 @@ import app.doing.com.doing.customView.SelectTabCustom;
 import app.doing.com.doing.handpick.adapter.CoachListItemAdapter;
 import app.doing.com.doing.handpick.adapter.CourseListItemAdapter;
 import app.doing.com.doing.handpick.adapter.GymListItemAdapter;
+import app.doing.com.doing.handpick.adapter.SelectedCoachListItemAdapter;
+import app.doing.com.doing.handpick.adapter.SelectedCourseListItemAdapter;
+import app.doing.com.doing.handpick.adapter.SelectedGymListItemAdapter;
 import app.doing.com.doing.handpick.item.CoachListItem;
 import app.doing.com.doing.handpick.item.CourseListItem;
 import app.doing.com.doing.handpick.item.GymListItem;
@@ -97,19 +100,17 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
             case 0:
                 return new CoachListItem(R.drawable.gtm_item_pic,"教练姓名","田径冠军","特点标签","简单介绍",(float) 4.5);
             case 1:
-                return new GymListItem(R.drawable.gtm_item_pic,"宝力豪健身","大悦城南区","天津市津南区海河教育园区同砚路38号",(float) 4.5,6,500);
+                return new GymListItem(R.drawable.gtm_item_pic,"宝力豪健身（大悦城南区）","特点标签","描述性文字",(float) 4.5);
             case 2:
                 return new CourseListItem(R.drawable.gtm_item_pic,"课程姓名",66,"特点标签","简单介绍",(float) 4.5);
             case 3:
-
+                return new CoachListItem(R.drawable.gtm_item_pic,"教练姓名","田径冠军","特点标签","简单介绍",(float) 4.5,60);
             case 4:
-
+                return new GymListItem(R.drawable.gtm_item_pic,"宝力豪健身（大悦城南区）","天津市津南区海河教育园区同砚路",(float) 4.5,600,50);
             case 5:
-                default:
-
-
+            default:
+                return new CourseListItem(R.drawable.gtm_item_pic,"课程姓名",66,"特点标签","简单介绍",(float) 4.5,50);
         }
-        return null;
     }
 
     private RecyclerView.Adapter newAdapter(List<ListItem> listItemList){
@@ -121,26 +122,27 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
             case 2:
                 return new CourseListItemAdapter(listItemList);
             case 3:
-
+                return new SelectedCoachListItemAdapter(listItemList);
             case 4:
-
+                return new SelectedGymListItemAdapter(listItemList);
             case 5:
             default:
-
-
+                return new SelectedCourseListItemAdapter(listItemList);
         }
-        return null;
     }
 
     private RecyclerView.LayoutManager createLayoutManager(){
         switch (indicator){
             case 0:
+            case 1:
             case 2:
                 return new GridLayoutManager(this,2);
-            case 1:
+            case 3:
+            case 4:
+            case 5:
+                default:
                 return new LinearLayoutManager(this);
         }
-        return null;
     }
 
     private void initList(){

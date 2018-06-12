@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/selected_coach_list_imageId"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:layout_margin="10dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+        android:id="@+id/selected_coach_list_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        app:layout_constraintLeft_toRightOf="@id/selected_coach_list_imageId"
+        app:layout_constraintTop_toTopOf="@id/selected_coach_list_imageId"/>
+
+    <TextView
+        android:id="@+id/selected_coach_list_pride"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="8sp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/selected_coach_list_name"
+        />
+
+    <TextView
+        android:id="@+id/selected_coach_list_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:lines="1"
+        app:layout_constraintLeft_toLeftOf="@id/selected_coach_list_name"
+        app:layout_constraintTop_toBottomOf="@id/selected_coach_list_name"/>
+
+    <TextView
+        android:id="@+id/selected_coach_list_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:lines="1"
+        app:layout_constraintLeft_toLeftOf="@id/selected_coach_list_name"
+        app:layout_constraintTop_toBottomOf="@id/selected_coach_list_tag"/>
+
+    <RatingBar
+        android:id="@+id/selected_coach_list_ratingbar"
+        style="@style/heartRatingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        app:layout_constraintTop_toBottomOf="@id/selected_coach_list_description"
+        app:layout_constraintLeft_toLeftOf="@id/selected_coach_list_name"/>
+
+
+    <TextView
+        android:id="@+id/selected_coach_list_ratings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        app:layout_constraintLeft_toRightOf="@id/selected_coach_list_ratingbar"
+        app:layout_constraintTop_toTopOf="@id/selected_coach_list_ratingbar"/>
+
+
+    <TextView
+        android:id="@+id/selected_coach_list_evaluatedNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/selected_coach_list_ratings"
+        app:layout_constraintTop_toTopOf="@id/selected_coach_list_ratingbar"
+        />
+
+
+</android.support.constraint.ConstraintLayout>

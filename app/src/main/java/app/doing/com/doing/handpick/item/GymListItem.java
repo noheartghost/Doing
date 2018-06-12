@@ -9,11 +9,32 @@ import android.app.LauncherActivity;
 public class GymListItem implements ListItem{
     private int imageId;
     private String name;
-    private String district;
     private String address;
     private float rating;
+    //评论数
     private int views;
     private int distance;
+    private String tag;
+    private String description;
+
+    //按健身场馆初始化
+    public GymListItem(int imageId, String name, String tag, String description,float rating ) {
+        this.imageId = imageId;
+        this.name = name;
+        this.rating = rating;
+        this.tag = tag;
+        this.description = description;
+    }
+
+    //按精选场馆初始化
+    public GymListItem(int imageId, String name, String address, float rating, int views, int distance) {
+        this.imageId = imageId;
+        this.name = name;
+        this.address = address;
+        this.rating = rating;
+        this.views = views;
+        this.distance = distance;
+    }
 
     public int getImageId() {
         return imageId;
@@ -21,10 +42,6 @@ public class GymListItem implements ListItem{
 
     public String getName() {
         return name;
-    }
-
-    public String getDistrict() {
-        return district;
     }
 
     public String getAddress() {
@@ -43,14 +60,13 @@ public class GymListItem implements ListItem{
         return distance;
     }
 
-    public GymListItem(int imageId, String name, String district, String address, float rating, int views, int distance) {
-        this.imageId = imageId;
-        this.name = name;
-
-        this.district = district;
-        this.address = address;
-        this.rating = rating;
-        this.views = views;
-        this.distance = distance;
+    public String getTag() {
+        return tag;
     }
+
+    public String getDescription() {
+        return description;
+    }
+
+
 }

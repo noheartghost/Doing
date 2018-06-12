@@ -31,25 +31,20 @@ public class GymListItemAdapter extends RecyclerView.Adapter<GymListItemAdapter.
     static class ViewHolder extends RecyclerView.ViewHolder{
         ImageView gymImage;
         TextView gymName;
-        TextView gymDistrict;
-        TextView gymAddress;
+        TextView gymTag;
+        TextView gymDescription;
         RatingBar gymRatingBar;
         TextView gymRating;
-        TextView gymViews;
-        TextView gymDistance;
 
 
         public ViewHolder(View view){
             super(view);
             gymImage = view.findViewById(R.id.gym_list_imageId);
             gymName = view.findViewById(R.id.gym_list_name);
-            gymDistrict = view.findViewById(R.id.gym_list_district);
-            gymAddress = view.findViewById(R.id.gym_list_address);
+            gymTag = view.findViewById(R.id.gym_list_tag);
+            gymDescription = view.findViewById(R.id.gym_list_description);
             gymRatingBar = view.findViewById(R.id.gym_list_ratingbar);
             gymRating = view.findViewById(R.id.gym_list_ratings);
-            gymViews = view.findViewById(R.id.gym_list_views);
-            gymDistance = view.findViewById(R.id.gym_list_distance);
-
         }
     }
 
@@ -75,12 +70,10 @@ public class GymListItemAdapter extends RecyclerView.Adapter<GymListItemAdapter.
             //使用Glide加载图片，当前使用本地资源代替
             Glide.with(context).load(gymListItem.getImageId()).into(holder.gymImage);
             holder.gymName.setText(gymListItem.getName());
-            holder.gymDistrict.setText("（"+gymListItem.getDistrict()+"）");
-            holder.gymAddress.setText(gymListItem.getAddress());
+            holder.gymTag.setText(gymListItem.getTag());
+            holder.gymDescription.setText(gymListItem.getDescription());
             holder.gymRatingBar.setRating(gymListItem.getRating());
             holder.gymRating.setText(""+gymListItem.getRating());
-            holder.gymViews.setText(""+gymListItem.getViews()+"条");
-            holder.gymDistance.setText(gymListItem.getDistance()+"m");
         }
 
     }

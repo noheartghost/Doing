@@ -85,4 +85,8 @@ public class NavigatorBarCustom extends ConstraintLayout{
         if(clickListener!=null)image_right.setOnClickListener(clickListener);
     }
 
+    public void setText_title(String text){
+        text_title.setText(text);
+    }
+
 }

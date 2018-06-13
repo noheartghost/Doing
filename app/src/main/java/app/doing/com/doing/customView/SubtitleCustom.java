@@ -26,6 +26,7 @@ public class SubtitleCustom extends ConstraintLayout {
         LayoutInflater.from(context).inflate(R.layout.subtitle_custom,this);
         this.setMinHeight(96);
         textView = findViewById(R.id.subtitle_title);
+
         button = findViewById(R.id.subtitle_button);
 
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.SubtitleCustom);

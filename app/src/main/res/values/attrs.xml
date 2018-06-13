@@ -3,7 +3,6 @@
     <declare-styleable name="ImageButtonCustom">
         <attr name="image" format="reference"></attr>
         <attr name="text" format="string"></attr>
-        <attr name="index" format="integer"></attr>
     </declare-styleable>
 
     <declare-styleable name="SubtitleCustom">

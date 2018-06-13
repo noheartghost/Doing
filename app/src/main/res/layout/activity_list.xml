@@ -31,24 +31,21 @@
             android:layout_height="wrap_content"
             android:text="精选推荐"
             android:gravity="center"
+            android:layout_marginTop="14dp"
             app:layout_constraintTop_toBottomOf="@id/list_navigator_bar"
-            app:layout_constraintBottom_toTopOf="@+id/list_viewpager"
             />
 
         <android.support.v4.view.ViewPager
-            android:id="@+id/list_viewpager"
+            android:id="@+id/list_viewpager1"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:clipToPadding="false"
-            android:overScrollMode="never"
+            android:layout_height="160dp"
             android:paddingLeft="@dimen/banner_padding"
             android:paddingRight="@dimen/banner_padding"
-            android:paddingStart="@dimen/banner_padding"
-            android:paddingEnd="@dimen/banner_padding"
-            app:layout_constraintTop_toBottomOf="@id/list_recommend"
-            app:layout_constraintBottom_toTopOf="@+id/list_tab_near"
-            ></android.support.v4.view.ViewPager>
+            android:clipToPadding="false"
+            android:layout_marginTop="14dp"
+            app:layout_constraintTop_toBottomOf="@id/list_recommend">
 
+        </android.support.v4.view.ViewPager>
 
         <app.doing.com.doing.customView.SelectTabCustom
             android:id="@+id/list_tab_near"
@@ -57,7 +54,8 @@
             app:select_selected="true"
             app:select_title="附件"
             app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintTop_toBottomOf="@id/list_viewpager"
+            android:layout_marginTop="14dp"
+            app:layout_constraintTop_toBottomOf="@id/list_viewpager1"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@+id/list_tab_type">
 
@@ -73,7 +71,7 @@
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintLeft_toRightOf="@id/list_tab_near"
             app:layout_constraintRight_toLeftOf="@+id/list_tab_score"
-            app:layout_constraintTop_toBottomOf="@id/list_viewpager">
+            app:layout_constraintTop_toTopOf="@id/list_tab_near">
 
         </app.doing.com.doing.customView.SelectTabCustom>
 
@@ -86,7 +84,7 @@
             app:layout_constraintHorizontal_weight="1"
             app:layout_constraintLeft_toRightOf="@id/list_tab_type"
             app:layout_constraintRight_toLeftOf="@+id/list_tab_select"
-            app:layout_constraintTop_toBottomOf="@id/list_viewpager">
+            app:layout_constraintTop_toTopOf="@id/list_tab_near">
 
         </app.doing.com.doing.customView.SelectTabCustom>
 
@@ -99,16 +97,27 @@
             app:layout_constraintHorizontal_weight="1"
             app:layout_constraintLeft_toRightOf="@id/list_tab_score"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/list_viewpager"
-            app:layout_constraintBottom_toTopOf="@+id/recycler_list">
+            app:layout_constraintTop_toTopOf="@id/list_tab_near"
+            >
 
         </app.doing.com.doing.customView.SelectTabCustom>
+
+        <View
+            android:id="@+id/list_line"
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/colorGrey"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/recycler_list"/>
 
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             app:layout_constraintTop_toBottomOf="@id/list_tab_select"
             >
 

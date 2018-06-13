@@ -4,18 +4,16 @@ import android.content.Context;
 import android.os.Handler;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 
 import java.util.List;
 
 /**
- * Created by cherry on 18-6-8.
+ * Created by cherry on 18-6-13.
  */
 
-public class CardBanner implements Runnable{
+public class DoingBanner implements Runnable{
 
-    private CardPagerAdapter mCardAdapter;
-    private ShadowTransformer mCardShadowTransformer;
+    private DoingPagerAdapter mpageAdapter;
     private Handler handler;
     private boolean isAlive;
     private boolean isContinue;
@@ -24,23 +22,17 @@ public class CardBanner implements Runnable{
     private int changeTime;
 
 
-    public CardBanner(List<Integer> images, Context context, FragmentManager fragmentManager, ViewPager viewPager,Handler handler){
+    public DoingBanner(List<Integer> images, Context context, FragmentManager fragmentManager, ViewPager viewPager, Handler handler){
         position = 1;
         //set the default change time
         changeTime = 3000;
-        mCardAdapter = new CardPagerAdapter();
+        mpageAdapter = new DoingPagerAdapter(context, images);
         size = images.size();
         isAlive = true;
 
-        for(Integer imagesId: images){
-            mCardAdapter.addCardItem(new CardItem(imagesId));
-        }
-
-        mCardShadowTransformer = new ShadowTransformer(viewPager, mCardAdapter);
         this.handler = handler;
 
-        viewPager.setAdapter(mCardAdapter);
-        viewPager.setPageTransformer(false, mCardShadowTransformer);
+        viewPager.setAdapter(mpageAdapter);
         viewPager.setOffscreenPageLimit(3);
     }
 
@@ -51,7 +43,6 @@ public class CardBanner implements Runnable{
     public void setIsAlive(boolean isAlive){
         this.isAlive = isAlive;
     }
-
 
     @Override
     public void run() {

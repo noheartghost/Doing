@@ -12,10 +12,11 @@
     <color name="textDarkSecondary">#8A000000</color>
     <color name="textDarkDisabled">#61000000</color>
 
-    <color name="colorGrey">#4a4a4a</color>
+    <!--<color name="colorGrey">#4a4a4a</color>-->
     <color name="textSubtitle">#8A2c2c2c</color>
     <color name="textDarkInvisible">#FFFFFF</color>
-
+    <color name="textGrey">#4a494a</color>
+    <color name="colorGrey">#d8d8d8</color>
     <color name="textLightPrimary">#FFFFFF</color>
     <color name="textLightSecondary">#B2FFFFFF</color>
     <color name="textLightDisabled">#80FFFFFF</color>

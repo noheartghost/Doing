@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import app.doing.com.doing.R;
+import app.doing.com.doing.customView.NavigatorBarCustom;
 import app.doing.com.doing.customView.SelectTabCustom;
 import app.doing.com.doing.handpick.adapter.CoachListItemAdapter;
 import app.doing.com.doing.handpick.adapter.CourseListItemAdapter;
@@ -25,7 +27,9 @@ import app.doing.com.doing.handpick.item.CoachListItem;
 import app.doing.com.doing.handpick.item.CourseListItem;
 import app.doing.com.doing.handpick.item.GymListItem;
 import app.doing.com.doing.handpick.item.ListItem;
-import app.doing.com.doing.utils.SliderBanner.CardBanner;
+import app.doing.com.doing.utils.Decoration.SpacesItemDecoration;
+import app.doing.com.doing.utils.SliderBanner.DoingBanner;
+import app.doing.com.doing.utils.SliderBanner.DoingPagerAdapter;
 
 public class ListActivity extends AppCompatActivity implements View.OnClickListener{
     private SelectTabCustom listTabNear;
@@ -35,8 +39,8 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
 
     private List<ListItem> listItemList = new ArrayList<>();
     private List<Integer> listBannerList = new ArrayList<>();
-    private ViewPager listViewPager;
-    private CardBanner cardBanner;
+    private ViewPager viewPager;
+    private DoingBanner doingBanner;
     private RecyclerView recyclerView;
     private Handler handler;
 
@@ -49,9 +53,36 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_list);
         Intent intent = getIntent();
         indicator = intent.getIntExtra("indicator",0);
+        initNavigator();
         initTab();
         initBanner();
         initList();
+    }
+
+    private void initNavigator(){
+        NavigatorBarCustom navigatorBarCustom = findViewById(R.id.list_navigator_bar);
+        switch (indicator){
+            case 0:
+                navigatorBarCustom.setText_title("健身教练");
+                break;
+            case 1:
+                navigatorBarCustom.setText_title("健身场馆");
+                break;
+            case 2:
+                navigatorBarCustom.setText_title("健身课程");
+                break;
+            case 3:
+                navigatorBarCustom.setText_title("明星教练");
+                break;
+            case 4:
+                navigatorBarCustom.setText_title("精选场馆");
+                break;
+            case 5:
+                default:
+                    navigatorBarCustom.setText_title("最火团课");
+                break;
+        }
+
     }
 
     private void initTab(){
@@ -76,23 +107,28 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initBanner(){
-        listViewPager = findViewById(R.id.list_viewpager);
 
         listBannerList.add(R.drawable.gtm_item_pic);
         listBannerList.add(R.drawable.pexels_photo);
         listBannerList.add(R.drawable.gtm_item_pic);
         listBannerList.add(R.drawable.gtm_item_pic);
 
+        viewPager = findViewById(R.id.list_viewpager1);
+        viewPager.setOffscreenPageLimit(3);
+        viewPager.setPageMargin(30);
+        DoingPagerAdapter adapter = new DoingPagerAdapter(this,listBannerList);
+        viewPager.setAdapter(adapter);
+
         handler = new Handler(){
             public void handleMessage(android.os.Message msg) {
-                listViewPager.setCurrentItem(msg.what);
+                viewPager.setCurrentItem(msg.what);
                 super.handleMessage(msg);
             }
         };
 
-        cardBanner = new CardBanner(listBannerList,this,getSupportFragmentManager(),listViewPager,handler);
-        cardBanner.setChangeTime(5000);
-        new Thread(cardBanner).start();
+        doingBanner = new DoingBanner(listBannerList,this,getSupportFragmentManager(),viewPager,handler);
+        new Thread(doingBanner).start();
+
     }
 
     private ListItem newItem(){
@@ -131,32 +167,31 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private RecyclerView.LayoutManager createLayoutManager(){
-        switch (indicator){
-            case 0:
-            case 1:
-            case 2:
-                return new GridLayoutManager(this,2);
-            case 3:
-            case 4:
-            case 5:
-                default:
-                return new LinearLayoutManager(this);
-        }
-    }
-
     private void initList(){
         for(int i=0;i<5;i++){
             listItemList.add(newItem());
         }
 
         recyclerView = findViewById(R.id.recycler_list);
-        RecyclerView.LayoutManager layoutManager = createLayoutManager();
+        RecyclerView.LayoutManager layoutManager;
+        int spacePixel = getResources().getDimensionPixelSize(R.dimen.recycler_spacing);
+        switch (indicator){
+            case 0:
+            case 1:
+            case 2:
+                layoutManager = new GridLayoutManager(this,2);
+                recyclerView.addItemDecoration(new SpacesItemDecoration((spacePixel),2));
+                break;
+            case 3:
+            case 4:
+            case 5:
+            default:
+                layoutManager = new LinearLayoutManager(this);
+                recyclerView.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
+        }
         if(null!=layoutManager)recyclerView.setLayoutManager(layoutManager);
         recyclerView.setFocusable(false);
-
         recyclerView.setAdapter(newAdapter(listItemList));
-
     }
 
     @Override
@@ -166,7 +201,7 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onStop() {
-        cardBanner.setIsAlive(false);
+        doingBanner.setIsAlive(false);
         super.onStop();
     }
 

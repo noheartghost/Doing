@@ -36,6 +36,15 @@ public class GymListItem implements ListItem{
         this.distance = distance;
     }
 
+    //按场馆详情页banner初始化
+    public GymListItem(int imageId,float rating, String name,String address,String tag){
+        this.imageId = imageId;
+        this.rating = rating;
+        this.name = name;
+        this.address = address;
+        this.tag = tag;
+    }
+
     public int getImageId() {
         return imageId;
     }

@@ -9,8 +9,12 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +34,9 @@ import app.doing.com.doing.handpick.item.ListItem;
 import app.doing.com.doing.utils.Decoration.SpacesItemDecoration;
 import app.doing.com.doing.utils.SliderBanner.DoingBanner;
 import app.doing.com.doing.utils.SliderBanner.DoingPagerAdapter;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class ListActivity extends AppCompatActivity implements View.OnClickListener{
     private SelectTabCustom listTabNear;
@@ -43,6 +50,11 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
     private DoingBanner doingBanner;
     private RecyclerView recyclerView;
     private Handler handler;
+
+    private static String baseUrl = "http://47.94.0.163:8080/fitness/";
+    //默认 url
+    private static String contentUrl = "GetGYMRecommendServlet";
+
 
     //指示当前属于哪个页面：0-5
     private int indicator;
@@ -168,6 +180,24 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initList(){
+        switch (indicator){
+            case 0:
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                contentUrl = "GetGYMRecommendServlet";
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+                default:
+        }
+
+        sendRequestWithOkHttp();
         for(int i=0;i<5;i++){
             listItemList.add(newItem());
         }
@@ -203,6 +233,29 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
     protected void onStop() {
         doingBanner.setIsAlive(false);
         super.onStop();
+    }
+
+    private void sendRequestWithOkHttp(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try{
+                    OkHttpClient client = new OkHttpClient();
+                    Request request = new Request.Builder()
+                            .url(baseUrl+contentUrl)
+                            .build();
+
+                    Response response = client.newCall(request).execute();
+                    JSONObject responseTex = new JSONObject(response.body().string());
+                    if(responseTex.get("status").equals("200")){
+                        Log.i("content",""+responseTex.get("gymdetails"));
+                    }
+
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 
 }

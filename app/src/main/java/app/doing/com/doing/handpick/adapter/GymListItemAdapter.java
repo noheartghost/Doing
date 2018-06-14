@@ -36,7 +36,6 @@ public class GymListItemAdapter extends RecyclerView.Adapter<GymListItemAdapter.
         RatingBar gymRatingBar;
         TextView gymRating;
 
-
         public ViewHolder(View view){
             super(view);
             gymImage = view.findViewById(R.id.gym_list_imageId);

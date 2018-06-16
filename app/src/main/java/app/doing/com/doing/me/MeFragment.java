@@ -11,6 +11,7 @@ import app.doing.com.doing.R;
 
 /**
  * Created by cherry on 18-5-21.
+ * 我的页面
  */
 
 public class MeFragment extends Fragment {
@@ -19,4 +20,6 @@ public class MeFragment extends Fragment {
         View meFragment = layoutInflater.inflate(R.layout.me_fragment,container,false);
         return meFragment;
     }
+
+
 }

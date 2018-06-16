@@ -1,17 +1,286 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:orientation="vertical">
+        <app.doing.com.doing.customView.CircleImageView
+            android:id="@+id/me_head_potrait"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/gtm_item_pic"
+            android:scaleType="centerCrop"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
-       <Button
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:text="我的界面"/>
-    </LinearLayout>
-</android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/me_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tom"
+            android:paddingBottom="20dp"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/me_head_potrait"
+            />
+
+        <View
+            android:id="@+id/me_line10"
+            android:layout_width="match_parent"
+            android:layout_height="20px"
+            android:background="@color/colorGrey"
+            app:layout_constraintTop_toBottomOf="@id/me_username"
+            />
+
+        <TextView
+            android:id="@+id/me_my_card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="我的健身卡"
+            android:paddingTop="26dp"
+            android:paddingBottom="26dp"
+            android:gravity="center"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/me_line12"
+            app:layout_constraintTop_toTopOf="@id/me_line10"
+            />
+
+        <View
+            android:id="@+id/me_line12"
+            android:layout_width="20px"
+            android:layout_height="0dp"
+            android:background="@color/colorGrey"
+            app:layout_constraintLeft_toRightOf="@id/me_my_card"
+            app:layout_constraintRight_toLeftOf="@+id/me_my_course"
+            app:layout_constraintTop_toTopOf="@id/me_my_card"
+            app:layout_constraintBottom_toBottomOf="@id/me_my_card"/>
+
+        <TextView
+            android:id="@+id/me_my_course"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="我的课程"
+            android:gravity="center"
+            app:layout_constraintTop_toTopOf="@id/me_my_card"
+            app:layout_constraintBottom_toBottomOf="@id/me_my_card"
+            app:layout_constraintLeft_toRightOf="@id/me_line12"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+        <View
+            android:id="@+id/me_line11"
+            android:layout_width="match_parent"
+            android:layout_height="20px"
+            android:background="@color/colorGrey"
+            app:layout_constraintTop_toBottomOf="@id/me_my_card"
+            />
+
+        <app.doing.com.doing.customView.TextLineCustom
+            android:id="@+id/me_my_record"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/me_my_card"
+            app:textline_content="我的订单"
+            app:textline_hint="查看更多订单"
+            >
+
+        </app.doing.com.doing.customView.TextLineCustom>
+
+        <View
+            android:id="@+id/me_line1"
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/colorGrey"
+            app:layout_constraintTop_toBottomOf="@id/me_my_record"
+            />
+
+
+        <TextView
+            android:id="@+id/me_unused"
+            android:layout_width="0dp"
+            android:textSize="12sp"
+            android:text="未使用"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/me_used"
+            app:layout_constraintTop_toBottomOf="@id/me_line1"
+            app:layout_constraintBottom_toTopOf="@+id/me_invite_friends"/>
+
+        <TextView
+            android:id="@+id/me_used"
+            android:layout_width="0dp"
+            android:textSize="12sp"
+            android:text="已使用"
+            android:gravity="center"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toRightOf="@id/me_unused"
+            app:layout_constraintRight_toLeftOf="@+id/me_wait_evaluate"
+            app:layout_constraintTop_toTopOf="@id/me_unused"/>
+
+        <TextView
+            android:id="@+id/me_wait_evaluate"
+            android:layout_width="0dp"
+            android:textSize="12sp"
+            android:text="待评价"
+            android:gravity="center"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toRightOf="@id/me_used"
+            app:layout_constraintRight_toLeftOf="@+id/me_after_sale"
+            app:layout_constraintTop_toTopOf="@id/me_unused"
+            />
+
+        <TextView
+            android:id="@+id/me_after_sale"
+            android:layout_width="0dp"
+            android:textSize="12sp"
+            android:text="退款/售后"
+            android:gravity="center"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toRightOf="@id/me_wait_evaluate"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/me_unused"
+            />
+
+        <View
+            android:id="@+id/me_line9"
+            android:layout_width="match_parent"
+            android:layout_height="20px"
+            android:background="@color/colorGrey"
+            app:layout_constraintTop_toBottomOf="@id/me_unused"
+            />
+
+
+        <app.doing.com.doing.customView.TextLineCustom
+            android:id="@+id/me_invite_friends"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/me_unused"
+            app:textline_content="邀请好友"
+            >
+
+        </app.doing.com.doing.customView.TextLineCustom>
+
+        <View
+            android:id="@+id/me_line2"
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/colorGrey"
+            app:layout_constraintTop_toBottomOf="@id/me_invite_friends"
+            />
+
+        <app.doing.com.doing.customView.TextLineCustom
+            android:id="@+id/me_tickets"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/me_line2"
+            app:textline_content="卡券包"
+            >
+
+        </app.doing.com.doing.customView.TextLineCustom>
+
+        <View
+            android:id="@+id/me_line3"
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/colorGrey"
+            app:layout_constraintTop_toBottomOf="@id/me_tickets"
+            />
+
+        <app.doing.com.doing.customView.TextLineCustom
+            android:id="@+id/me_collection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/me_tickets"
+            app:textline_content="我的收藏"
+            >
+
+        </app.doing.com.doing.customView.TextLineCustom>
+
+        <View
+            android:id="@+id/me_line4"
+            android:layout_width="match_parent"
+            android:layout_height="20px"
+            android:background="@color/colorGrey"
+            app:layout_constraintTop_toBottomOf="@id/me_collection"
+            />
+
+        <app.doing.com.doing.customView.TextLineCustom
+            android:id="@+id/me_settings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/me_collection"
+            app:textline_content="设置">
+
+        </app.doing.com.doing.customView.TextLineCustom>
+
+        <View
+            android:id="@+id/me_line5"
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/colorGrey"
+            app:layout_constraintTop_toBottomOf="@id/me_settings"
+            />
+
+        <app.doing.com.doing.customView.TextLineCustom
+            android:id="@+id/me_protocol"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/me_line5"
+            app:textline_content="用户协议">
+
+        </app.doing.com.doing.customView.TextLineCustom>
+
+        <View
+            android:id="@+id/me_line6"
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/colorGrey"
+            app:layout_constraintTop_toBottomOf="@id/me_protocol"
+            />
+
+        <app.doing.com.doing.customView.TextLineCustom
+            android:id="@+id/me_constact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/me_line6"
+            app:textline_content="联系我们">
+
+        </app.doing.com.doing.customView.TextLineCustom>
+
+        <View
+            android:id="@+id/me_line7"
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/colorGrey"
+            app:layout_constraintTop_toBottomOf="@id/me_constact"
+            />
+
+        <app.doing.com.doing.customView.TextLineCustom
+            android:id="@+id/me_about"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/me_line7"
+            app:textline_content="关于">
+
+        </app.doing.com.doing.customView.TextLineCustom>
+
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

@@ -3,6 +3,7 @@ package app.doing.com.doing;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.util.Log;
@@ -10,6 +11,7 @@ import android.view.MotionEvent;
 import android.view.ViewConfiguration;
 import android.widget.FrameLayout;
 import android.view.View;
+import android.widget.Toast;
 
 import app.doing.com.doing.customView.DoingFrameLayout;
 import app.doing.com.doing.customView.ImageButtonCustom;
@@ -203,4 +205,6 @@ public class MainActivity extends Activity implements View.OnClickListener,View.
         }
         return false;
     }
+
+
 }

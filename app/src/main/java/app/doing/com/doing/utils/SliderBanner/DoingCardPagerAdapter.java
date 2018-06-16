@@ -57,7 +57,7 @@ public class DoingCardPagerAdapter extends PagerAdapter{
         name.setText(gymListItem.getName());
         address.setText(gymListItem.getAddress());
         tag.setText(gymListItem.getTag());
-        ratingBar.setRating(gymListItem.getRating());
+       // ratingBar.setRating(gymListItem.getRating());
         container.addView(view);
         return view;
     }

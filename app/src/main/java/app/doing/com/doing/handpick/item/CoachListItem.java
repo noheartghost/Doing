@@ -1,5 +1,12 @@
 package app.doing.com.doing.handpick.item;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by cherry on 18-6-9.
  */
@@ -33,6 +40,8 @@ public class CoachListItem implements ListItem{
         this.description = description;
         this.rating = rating;
     }
+
+
 
     public int getImageId() {
         return imageId;

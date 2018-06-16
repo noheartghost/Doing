@@ -7,10 +7,10 @@ import android.app.LauncherActivity;
  */
 
 public class GymListItem implements ListItem{
-    private int imageId;
+    private String imageId;
     private String name;
     private String address;
-    private float rating;
+    private double rating;
     //评论数
     private int views;
     private int distance;
@@ -18,7 +18,7 @@ public class GymListItem implements ListItem{
     private String description;
 
     //按健身场馆初始化
-    public GymListItem(int imageId, String name, String tag, String description,float rating ) {
+    public GymListItem(String imageId, String name, String tag, String description,double rating ) {
         this.imageId = imageId;
         this.name = name;
         this.rating = rating;
@@ -27,7 +27,7 @@ public class GymListItem implements ListItem{
     }
 
     //按精选场馆初始化
-    public GymListItem(int imageId, String name, String address, float rating, int views, int distance) {
+    public GymListItem(String imageId, String name, String address, double rating, int views, int distance) {
         this.imageId = imageId;
         this.name = name;
         this.address = address;
@@ -37,7 +37,7 @@ public class GymListItem implements ListItem{
     }
 
     //按场馆详情页banner初始化
-    public GymListItem(int imageId,float rating, String name,String address,String tag){
+    public GymListItem(String imageId,double rating, String name,String address,String tag){
         this.imageId = imageId;
         this.rating = rating;
         this.name = name;
@@ -45,7 +45,7 @@ public class GymListItem implements ListItem{
         this.tag = tag;
     }
 
-    public int getImageId() {
+    public String getImageId() {
         return imageId;
     }
 
@@ -57,7 +57,7 @@ public class GymListItem implements ListItem{
         return address;
     }
 
-    public float getRating() {
+    public double getRating() {
         return rating;
     }
 

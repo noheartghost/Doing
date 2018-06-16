@@ -50,7 +50,7 @@ public class GymDetailActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.gym_detail_banner);
         List<GymListItem> list = new ArrayList<>();
         for(int i = 0;i<3;i++){
-            list.add(new GymListItem(R.drawable.gtm_item_pic,i,"宝力豪健身","天津市津南区南开大学津南校区","小标签"));
+            list.add(new GymListItem(String.valueOf(R.drawable.gtm_item_pic),i,"宝力豪健身","天津市津南区南开大学津南校区","小标签"));
         }
 
         DoingCardPagerAdapter adapter = new DoingCardPagerAdapter(this,list);

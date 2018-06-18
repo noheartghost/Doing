@@ -82,18 +82,19 @@
         app:layout_constraintRight_toRightOf="@id/pop_select_type1"
         app:layout_constraintTop_toBottomOf="@id/pop_select_type1_item1"/>
 
-    <TextView
+    <EditText
         android:id="@+id/pop_low_price"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="最低价"
         android:textColor="@color/textDarkGrey"
+        android:cursorVisible="false"
         android:textSize="13sp"
         android:layout_marginTop="15dp"
         android:gravity="center"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:background="@drawable/textview_grey_border"
+        android:background="@drawable/textview_grey_border_radius"
         app:layout_constraintTop_toBottomOf="@id/pop_price_title"
         app:layout_constraintLeft_toLeftOf="@id/pop_select_type1"
         app:layout_constraintRight_toLeftOf="@+id/pop_line_price"/>
@@ -111,17 +112,18 @@
         app:layout_constraintRight_toLeftOf="@+id/pop_high_price"
         />
 
-    <TextView
+    <EditText
         android:id="@+id/pop_high_price"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="最高价"
         android:textColor="@color/textDarkGrey"
+        android:cursorVisible="false"
         android:textSize="13sp"
         android:gravity="center"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:background="@drawable/textview_grey_border"
+        android:background="@drawable/textview_grey_border_radius"
         app:layout_constraintTop_toTopOf="@id/pop_low_price"
         app:layout_constraintLeft_toRightOf="@id/pop_line_price"
         app:layout_constraintRight_toRightOf="@id/pop_select_type1"/>
@@ -147,7 +149,7 @@
         android:layout_marginBottom="20dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:background="@drawable/textbutton_white_border"
+        android:background="@drawable/textbutton_white_border_radius"
         android:textColor="@color/colorPrimary"
         app:layout_constraintTop_toBottomOf="@id/popup_line"
         app:layout_constraintLeft_toLeftOf="@id/pop_select_type1"
@@ -165,7 +167,7 @@
         android:paddingBottom="10dp"
         android:layout_marginLeft="15dp"
         android:textColor="@color/textDarkInvisible"
-        android:background="@drawable/textbutton_black_border"
+        android:background="@drawable/textbutton_black_border_radius"
         app:layout_constraintTop_toTopOf="@id/pop_reset"
         app:layout_constraintLeft_toRightOf="@id/pop_reset"
         app:layout_constraintRight_toRightOf="@id/pop_select_type1"/>

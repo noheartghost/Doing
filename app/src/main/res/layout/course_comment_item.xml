@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--用户评论item的ui-->
+
+    <app.doing.com.doing.customView.CircleImageView
+        android:id="@+id/course_comment_image"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginLeft="20dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/course_comment_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="20dp"
+        app:layout_constraintLeft_toRightOf="@id/course_comment_image"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/course_comment_content"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:lines="2"
+        app:layout_constraintTop_toBottomOf="@id/course_comment_name"
+        app:layout_constraintLeft_toLeftOf="@id/course_comment_name"
+        app:layout_constraintRight_toRightOf="@id/course_comment_name"/>
+
+    <TextView
+        android:id="@+id/course_comment_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="@id/course_comment_name"
+        app:layout_constraintTop_toBottomOf="@id/course_comment_content"/>
+
+    <TextView
+        android:id="@+id/course_comment_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/course_comment_date"
+        app:layout_constraintTop_toTopOf="@id/course_comment_date"/>
+
+    <TextView
+        android:id="@+id/course_comment_thumb_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/course_comment_content"
+        app:layout_constraintRight_toRightOf="@id/course_comment_name"
+        />
+
+    <ImageButton
+        android:id="@+id/course_comment_thumb"
+        android:layout_width="48px"
+        android:layout_height="48px"
+        android:background="@drawable/thumbs_up_icon"
+        app:layout_constraintTop_toBottomOf="@id/course_comment_content"
+        app:layout_constraintRight_toLeftOf="@id/course_comment_thumb_num"/>
+
+</android.support.constraint.ConstraintLayout>

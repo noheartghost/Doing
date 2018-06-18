@@ -12,7 +12,6 @@
             android:id="@+id/me_head_potrait"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/gtm_item_pic"
             android:scaleType="centerCrop"
             android:paddingTop="14dp"
             android:paddingBottom="14dp"

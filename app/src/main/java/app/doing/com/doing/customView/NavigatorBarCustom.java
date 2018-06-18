@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import app.doing.com.doing.R;
@@ -22,10 +23,11 @@ public class NavigatorBarCustom extends ConstraintLayout{
     private ImageButton image_left;
     private ImageButton image_right;
     private TextView text_title;
+    private ImageView image_center;
 
     public NavigatorBarCustom(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        this.setPadding(20,20,20,0);
+        this.setPadding(20,10,20,10);
         initView(context);
         initType(context,attrs);
     }
@@ -35,7 +37,7 @@ public class NavigatorBarCustom extends ConstraintLayout{
         image_left = findViewById(R.id.nav_image_left);
         image_right = findViewById(R.id.nav_image_right);
         text_title = findViewById(R.id.nav_text);
-
+        image_center = findViewById(R.id.nav_image_center);
     }
 
     private void initType(Context context, AttributeSet attributeSet){
@@ -62,6 +64,12 @@ public class NavigatorBarCustom extends ConstraintLayout{
                     break;
                 case R.styleable.NavigatorBarCustom_text_title:
                     text_title.setText(typedArray.getString(index));
+                    break;
+                case R.styleable.NavigatorBarCustom_center_img_visile:
+                    setVisible(typedArray,image_center,index);
+                    break;
+                case R.styleable.NavigatorBarCustom_center_image:
+                    image_center.setBackgroundResource(typedArray.getResourceId(index,-1));
                     break;
             }
         }

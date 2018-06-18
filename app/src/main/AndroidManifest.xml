@@ -27,38 +27,36 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="GTqbIz4bhjagBTESGcN2FLLulV2pqTxV"/>
+            android:value="GTqbIz4bhjagBTESGcN2FLLulV2pqTxV" />
 
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
-        <service android:name="com.baidu.location.f"
+        <service
+            android:name="com.baidu.location.f"
             android:enabled="true"
-            android:process=":remote">
+            android:process=":remote"></service>
 
-        </service>
         <activity
             android:name=".WelcomeActivity"
             android:theme="@android:style/Theme.NoTitleBar" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".RegisterActivity" />
         //设置为SingleTask模式，整个应用程序中仅存在该活动的一个实例
-
         <activity
             android:name=".handpick.PayActivity"
             android:launchMode="singleTask" />
-        <activity android:name=".handpick.ListActivity"
-            />
-        <activity android:name=".handpick.GymDetailActivity">
+        <activity android:name=".handpick.ListActivity" />
+        <activity android:name=".handpick.GymDetailActivity"></activity>
+        <activity android:name=".handpick.CourseDetailActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

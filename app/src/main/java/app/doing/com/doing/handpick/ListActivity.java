@@ -2,6 +2,7 @@ package app.doing.com.doing.handpick;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
@@ -266,7 +267,8 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
             popupWindow = new PopupWindow(popupView, WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.WRAP_CONTENT,true);
             popupWindow.setContentView(popupView);
             popupWindow.setTouchable(true);
-            popupWindow.setOutsideTouchable(false);
+            //popupWindow.setOutsideTouchable(false);
+            popupWindow.setBackgroundDrawable(new ColorDrawable());
         }
 
         popupWindow.showAsDropDown(listTabSelect);

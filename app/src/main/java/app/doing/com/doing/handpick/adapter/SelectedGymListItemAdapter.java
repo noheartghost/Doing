@@ -56,7 +56,7 @@ public class SelectedGymListItemAdapter extends RecyclerView.Adapter<SelectedGym
         if(listItem instanceof GymListItem){
             GymListItem gymListItem = (GymListItem) listItem;
             //使用Glide加载图片，当前使用本地资源代替
-            Glide.with(context).load(BASE_URL+ SELECTED_GYM_URL+"?gymphotosid="+gymListItem.getImageId()).into(holder.image);
+            Glide.with(context).load(BASE_URL+ SELECTED_GYM_URL+"?gymid="+gymListItem.getImageId()).into(holder.image);
             holder.name.setText(gymListItem.getName());
             holder.address.setText(gymListItem.getAddress());
             holder.ratingBar.setRating((float) gymListItem.getRating());

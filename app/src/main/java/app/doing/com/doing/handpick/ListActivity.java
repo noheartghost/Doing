@@ -12,7 +12,12 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.PopupWindow;
 import android.widget.Toast;
 
 import com.baidu.location.BDAbstractLocationListener;
@@ -64,6 +69,8 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
     private Handler bannerHandler;//负责更新banner
     private Handler listHandler = new Handler();//负责更新list
     private RecyclerView.Adapter mAdapter;
+    private PopupWindow popupWindow;
+    private View popupView;
 
     //默认 url
     private static String contentUrl = "GetGYMRecommendServlet";
@@ -244,7 +251,33 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.list_tab_select:
+                showPopupWindow();
+                break;
 
+        }
+
+    }
+
+    private void showPopupWindow(){
+        if(null == popupView)popupView = LayoutInflater.from(this).inflate(R.layout.select_popup_window,null);
+        if(null == popupWindow){
+            popupWindow = new PopupWindow(popupView, WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.WRAP_CONTENT,true);
+            popupWindow.setContentView(popupView);
+            popupWindow.setTouchable(true);
+            popupWindow.setOutsideTouchable(false);
+        }
+
+        popupWindow.showAsDropDown(listTabSelect);
+        backgroundAlpha(0.4f);
+    }
+
+    //遮罩层，设置屏幕透明度
+    private void backgroundAlpha(float f){
+        WindowManager.LayoutParams lp = getWindow().getAttributes();
+        lp.alpha = f;
+        getWindow().setAttributes(lp);
     }
 
     @Override

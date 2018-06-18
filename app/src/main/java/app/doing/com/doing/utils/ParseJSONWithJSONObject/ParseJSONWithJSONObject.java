@@ -57,7 +57,7 @@ public final class ParseJSONWithJSONObject {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
                         list.add(new GymListItem(
                                 jsonObject.getString("gymid"),
-                                jsonObject.getString("gymname"),
+                                jsonObject.getString("name"),
                                 jsonObject.getString("location"),
                                 jsonObject.getDouble("score"),
                                 jsonObject.getInt("commentnum"),

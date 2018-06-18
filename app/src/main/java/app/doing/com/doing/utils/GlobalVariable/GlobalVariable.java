@@ -16,7 +16,7 @@ public interface GlobalVariable {
     /*
         获取图片url
      */
-    //场馆图片
-    public final static String GYM_PHOTO = "GetGymPhotoServlet";
+    //场馆的头像图片
+    public final static String GYM_PHOTO = "GetGymAvatarServlet";
 
 }

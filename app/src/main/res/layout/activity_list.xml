@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:scrollbars="none"
+    android:id="@+id/list_body"
     tools:context="app.doing.com.doing.handpick.ListActivity">
 
     <android.support.constraint.ConstraintLayout

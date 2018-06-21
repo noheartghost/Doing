@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/text_line_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:layout_marginLeft="22dp"
+        android:paddingTop="14dp"
+        android:paddingBottom="14dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+        android:id="@+id/text_line_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="9sp"
+        app:layout_constraintTop_toTopOf="@id/text_line_content"
+        app:layout_constraintRight_toLeftOf="@+id/text_line_more"
+        app:layout_constraintBottom_toBottomOf="@id/text_line_content"
+        android:layout_gravity="center_vertical"
+        />
+
+    <ImageButton
+        android:id="@+id/text_line_more"
+        android:layout_width="42px"
+        android:layout_height="42px"
+        android:background="@drawable/right_icon"
+        android:layout_marginRight="22dp"
+        android:layout_gravity="center_vertical"
+        app:layout_constraintTop_toTopOf="@id/text_line_content"
+        app:layout_constraintBottom_toBottomOf="@id/text_line_content"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+</merge>

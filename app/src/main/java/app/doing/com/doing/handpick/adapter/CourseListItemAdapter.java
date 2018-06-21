@@ -14,14 +14,16 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 import app.doing.com.doing.R;
+import app.doing.com.doing.handpick.item.CoachListItem;
 import app.doing.com.doing.handpick.item.CourseListItem;
+import app.doing.com.doing.handpick.item.ListItem;
 
 /**
  * Created by cherry on 18-6-9.
  */
 
-public class CourseListItemAdapter extends RecyclerView.Adapter<CourseListItemAdapter.ViewHolder>{
-    private List<CourseListItem> courseListItemList;
+public class CourseListItemAdapter extends RecyclerView.Adapter<CourseListItemAdapter.ViewHolder> {
+    private List<ListItem> listItemList;
     private Context context;
 
     static class ViewHolder extends RecyclerView.ViewHolder{
@@ -45,8 +47,8 @@ public class CourseListItemAdapter extends RecyclerView.Adapter<CourseListItemAd
         }
     }
 
-    public CourseListItemAdapter(List<CourseListItem> courseListItemList) {
-        this.courseListItemList = courseListItemList;
+    public CourseListItemAdapter(List<ListItem> listItemList) {
+        this.listItemList = listItemList;
     }
 
     @Override
@@ -60,21 +62,25 @@ public class CourseListItemAdapter extends RecyclerView.Adapter<CourseListItemAd
 
     @Override
     public void onBindViewHolder(CourseListItemAdapter.ViewHolder holder, int position) {
-        CourseListItem courseListItem = courseListItemList.get(position);
-        //使用Glide加载图片，当前使用本地资源代替
-        Glide.with(context).load(courseListItem.getImageId()).into(holder.courseImage);
-        holder.courseName.setText(courseListItem.getName());
-        holder.coursePerson.setText(courseListItem.getPersons()+"人参加");
-        holder.courseTag.setText(courseListItem.getTag());
-        holder.courseDescription.setText(courseListItem.getDescription());
-        holder.courseRatingBar.setRating(courseListItem.getRating());
-        holder.courseRating.setText(""+courseListItem.getRating());
+        ListItem listItem = listItemList.get(position);
+        if(listItem instanceof CourseListItem){
+            CourseListItem courseListItem = (CourseListItem) listItem;
+            //使用Glide加载图片，当前使用本地资源代替
+            Glide.with(context).load(courseListItem.getImageId()).into(holder.courseImage);
+            holder.courseName.setText(courseListItem.getName());
+            holder.coursePerson.setText(courseListItem.getPersons()+"人参加");
+            holder.courseTag.setText(courseListItem.getTag());
+            holder.courseDescription.setText(courseListItem.getDescription());
+            holder.courseRatingBar.setRating(courseListItem.getRating());
+            holder.courseRating.setText(""+courseListItem.getRating());
+        }
+
 
     }
 
     @Override
     public int getItemCount() {
-        return courseListItemList.size();
+        return listItemList.size();
     }
 }
 

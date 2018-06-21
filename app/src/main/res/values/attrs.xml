@@ -3,7 +3,6 @@
     <declare-styleable name="ImageButtonCustom">
         <attr name="image" format="reference"></attr>
         <attr name="text" format="string"></attr>
-        <attr name="index" format="integer"></attr>
     </declare-styleable>
 
     <declare-styleable name="SubtitleCustom">
@@ -18,11 +17,29 @@
         <attr name="left_image" format="reference"></attr>
         <attr name="right_image" format="reference"></attr>
         <attr name="text_title" format="string"></attr>
+        <attr name="center_image" format="reference"></attr>
+        <attr name="center_img_visile" format="boolean"></attr>
     </declare-styleable>
 
     <declare-styleable name="SelectTabCustom">
         <attr name="select_title" format="string"></attr>
         <attr name="select_selected" format="boolean"></attr>
+    </declare-styleable>
+
+    <declare-styleable name="RecordItemCustom">
+        <attr name="record_name" format="string"></attr>
+        <attr name="record_content" format="string"></attr>
+    </declare-styleable>
+
+    <declare-styleable name="TextLineCustom">
+        <attr name="textline_content" format="string"></attr>
+        <attr name="textline_hint" format="string"></attr>
+    </declare-styleable>
+    
+    <declare-styleable name="CircleImageView">
+        <attr name="border_width" format="dimension"/>
+        <attr name="border_color" format="color" />
+        <attr name="border_overlay" format="boolean" />
     </declare-styleable>
 
 </resources>

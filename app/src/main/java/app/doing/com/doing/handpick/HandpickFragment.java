@@ -17,6 +17,7 @@ import java.util.List;
 import app.doing.com.doing.R;
 import app.doing.com.doing.ViewPagerClass;
 import app.doing.com.doing.customView.ImageButtonCustom;
+import app.doing.com.doing.customView.SubtitleCustom;
 import app.doing.com.doing.handpick.adapter.CoachItemAdapter;
 import app.doing.com.doing.handpick.adapter.CourseItemAdapter;
 import app.doing.com.doing.handpick.adapter.GymItemAdapter;
@@ -33,9 +34,11 @@ public class HandpickFragment extends Fragment implements View.OnClickListener{
     private ImageButtonCustom gym_ibc;
     private ImageButtonCustom course_ibc;
     private ImageButtonCustom coach_ibc;
-
     private ViewPagerClass viewPager1, viewPager2;
     private List<View> views1, views2;
+    private SubtitleCustom gym_subTitle;
+    private SubtitleCustom coach_subTitle;
+    private SubtitleCustom course_subTitle;
 
     //展示的4个精选场馆
     private List<GymItem> gymItemList = new ArrayList<>();
@@ -54,6 +57,13 @@ public class HandpickFragment extends Fragment implements View.OnClickListener{
 
     private void initViews(View view){
 
+        initRecyclerView(view);
+        initListButton(view);
+        initMoreButton(view);
+
+    }
+
+    private void initListButton(View view){
         gym_ibc = view.findViewById(R.id.gym_image);
         course_ibc = view.findViewById(R.id.course_image);
         coach_ibc = view.findViewById(R.id.coach_image);
@@ -70,11 +80,19 @@ public class HandpickFragment extends Fragment implements View.OnClickListener{
         course_ibc.setOnClickListener(this);
         coach_ibc.setOnClickListener(this);
 
-        /*获取精选数据列表*/
-        getGymItemList();
-        getCoachItemList();
-        getCourseItemList();
+    }
 
+    private void initMoreButton(View view){
+        gym_subTitle = view.findViewById(R.id.handpick_gym_title);
+        coach_subTitle = view.findViewById(R.id.handpick_coach_title);
+        course_subTitle = view.findViewById(R.id.handpick_course_title);
+
+        gym_subTitle.getButton().setOnClickListener(this);
+        coach_subTitle.getButton().setOnClickListener(this);
+        course_subTitle.getButton().setOnClickListener(this);
+    }
+
+    private void initRecyclerView(View view){
         /*设置RecyclerView布局*/
 
         //设置场馆gym
@@ -82,11 +100,24 @@ public class HandpickFragment extends Fragment implements View.OnClickListener{
         GridLayoutManager layoutManager_gym = new GridLayoutManager(getActivity(),2);
         recyclerView_gym.setLayoutManager(layoutManager_gym);
 
+         /*获取精选数据列表*/
+        getGymItemList();
+
+        //设置场馆gym
+        GymItemAdapter gymItemAdapter = new GymItemAdapter(gymItemList);
+        recyclerView_gym.setAdapter(gymItemAdapter);
+
         //设置教练coach
         RecyclerView recyclerView_coach = view.findViewById(R.id.handpick_coach_list);
         LinearLayoutManager layoutManager_coach = new LinearLayoutManager(getActivity());
         layoutManager_coach.setOrientation(LinearLayoutManager.HORIZONTAL);
         recyclerView_coach.setLayoutManager(layoutManager_coach);
+
+        getCoachItemList();
+
+        //设置教练coach
+        CoachItemAdapter coachItemAdapter = new CoachItemAdapter(coachItemList);
+        recyclerView_coach.setAdapter(coachItemAdapter);
 
         //设置课程
         RecyclerView recyclerView_course = view.findViewById(R.id.handpick_course_list);
@@ -94,20 +125,11 @@ public class HandpickFragment extends Fragment implements View.OnClickListener{
         layoutManager_course.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView_course.setLayoutManager(layoutManager_course);
 
-        /*设置适配器*/
-
-        //设置场馆gym
-        GymItemAdapter gymItemAdapter = new GymItemAdapter(gymItemList);
-        recyclerView_gym.setAdapter(gymItemAdapter);
-
-        //设置教练coach
-        CoachItemAdapter coachItemAdapter = new CoachItemAdapter(coachItemList);
-        recyclerView_coach.setAdapter(coachItemAdapter);
+        getCourseItemList();
 
         //设置课程
         CourseItemAdapter courseItemAdapter = new CourseItemAdapter(courseItemList);
         recyclerView_course.setAdapter(courseItemAdapter);
-
     }
 
     //定义轮播图片
@@ -144,23 +166,29 @@ public class HandpickFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         //判断点击的按钮
-        Intent intent;
+        Intent intent = new Intent(getActivity(),ListActivity.class);
         switch (v.getId()){
+            case R.id.coach_image:
+                intent.putExtra("indicator",0);
+                break;
             case R.id.gym_image:
-                intent = new Intent(getActivity(),GymActivity.class);
-                startActivity(intent);
+                intent.putExtra("indicator",1);
                 break;
             case R.id.course_image:
-                intent = new Intent(getActivity(),CourseActivity.class);
-                startActivity(intent);
+                intent.putExtra("indicator",2);
                 break;
-            case R.id.coach_image:
-                intent = new Intent(getActivity(),CoachActivity.class);
-                startActivity(intent);
-                break;
+
             default:
                 break;
         }
+        if(v.getParent() == coach_subTitle){
+            intent.putExtra("indicator",3);
+        }else if(v.getParent() == gym_subTitle){
+            intent.putExtra("indicator",4);
+        }else if(v.getParent() == course_subTitle){
+            intent.putExtra("indicator",5);
+        }
+        startActivity(intent);
 
     }
 

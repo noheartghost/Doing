@@ -18,6 +18,7 @@ import java.util.jar.Attributes;
 
 import app.doing.com.doing.R;
 
+
 /**
  * Created by cherry on 18-5-22.
  */
@@ -25,7 +26,6 @@ import app.doing.com.doing.R;
 public class ImageButtonCustom extends ConstraintLayout {
     private ImageView imageView;
     private TextView textView;
-    private int index;
 
     public ImageButtonCustom(@NonNull Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -38,7 +38,6 @@ public class ImageButtonCustom extends ConstraintLayout {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ImageButtonCustom);
         setText(typedArray.getString(R.styleable.ImageButtonCustom_text));
         setImage(typedArray.getResourceId(R.styleable.ImageButtonCustom_image, -1));
-        index = typedArray.getInteger(R.styleable.ImageButtonCustom_index, 0);
         typedArray.recycle();
     }
 

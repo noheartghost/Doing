@@ -7,12 +7,6 @@
 
     </stroke>
 
-    <padding
-        android:bottom="16dp"
-        android:top="16dp"
-        android:left="25dp"
-        android:right="25dp"
-        />
 
 
 </shape>

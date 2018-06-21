@@ -15,13 +15,14 @@ import java.util.List;
 
 import app.doing.com.doing.R;
 import app.doing.com.doing.handpick.item.CoachListItem;
+import app.doing.com.doing.handpick.item.ListItem;
 
 /**
  * Created by cherry on 18-6-9.
  */
 
-public class CoachListItemAdapter extends RecyclerView.Adapter<CoachListItemAdapter.ViewHolder>{
-    private List<CoachListItem> coachListItemList;
+public class CoachListItemAdapter extends RecyclerView.Adapter<CoachListItemAdapter.ViewHolder> {
+    private List<ListItem> listItemList;
     private Context context;
 
     static class ViewHolder extends RecyclerView.ViewHolder{
@@ -45,8 +46,8 @@ public class CoachListItemAdapter extends RecyclerView.Adapter<CoachListItemAdap
         }
     }
 
-    public CoachListItemAdapter(List<CoachListItem> coachListItemList) {
-        this.coachListItemList = coachListItemList;
+    public CoachListItemAdapter(List<ListItem> listItemList) {
+        this.listItemList = listItemList;
     }
 
     @Override
@@ -60,20 +61,24 @@ public class CoachListItemAdapter extends RecyclerView.Adapter<CoachListItemAdap
 
     @Override
     public void onBindViewHolder(CoachListItemAdapter.ViewHolder holder, int position) {
-        CoachListItem coachListItem = coachListItemList.get(position);
-        //使用Glide加载图片，当前使用本地资源代替
-        Glide.with(context).load(coachListItem.getImageId()).into(holder.coachImage);
-        holder.coachName.setText(coachListItem.getName());
-        holder.coachPride.setText(coachListItem.getPride());
-        holder.coachTag.setText(coachListItem.getTag());
-        holder.coachDescription.setText(coachListItem.getDescription());
-        holder.coachRatingBar.setRating(coachListItem.getRating());
-        holder.coachRating.setText(""+coachListItem.getRating());
+        ListItem listItem = listItemList.get(position);
+        if(listItem instanceof CoachListItem){
+            CoachListItem coachListItem = (CoachListItem) listItem;
+            //使用Glide加载图片，当前使用本地资源代替
+            Glide.with(context).load(coachListItem.getImageId()).into(holder.coachImage);
+            holder.coachName.setText(coachListItem.getName());
+            holder.coachPride.setText(coachListItem.getPride());
+            holder.coachTag.setText(coachListItem.getTag());
+            holder.coachDescription.setText(coachListItem.getDescription());
+            holder.coachRatingBar.setRating(coachListItem.getRating());
+            holder.coachRating.setText(""+coachListItem.getRating());
+
+        }
 
     }
 
     @Override
     public int getItemCount() {
-        return coachListItemList.size();
+        return listItemList.size();
     }
 }

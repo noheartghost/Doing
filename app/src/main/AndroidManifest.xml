@@ -11,7 +11,12 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- 获取经纬度 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <!-- 获取打电话权限 -->
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
@@ -21,7 +26,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="GTqbIz4bhjagBTESGcN2FLLulV2pqTxV" />
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,6 +38,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote"></service>
+
         <activity
             android:name=".WelcomeActivity"
             android:theme="@android:style/Theme.NoTitleBar" />
@@ -36,15 +51,17 @@
         <activity android:name=".RegisterActivity" />
         //设置为SingleTask模式，整个应用程序中仅存在该活动的一个实例
         <activity
-            android:name=".handpick.GymActivity"
+            android:name=".handpick.PayActivity"
             android:launchMode="singleTask" />
-        <activity
-            android:name=".handpick.CourseActivity"
-            android:launchMode="singleTask" />
-        <activity
-            android:name=".handpick.CoachActivity"
-            android:launchMode="singleTask" />
-        <activity android:name=".EditContentActivity"></activity>
+        <activity android:name=".handpick.ListActivity" />
+        <activity android:name=".handpick.GymDetailActivity"></activity>
+        <activity android:name=".handpick.CourseDetailActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

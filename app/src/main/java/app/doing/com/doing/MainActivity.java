@@ -4,11 +4,12 @@ import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
-import android.widget.FrameLayout;
-
+import app.doing.com.doing.customView.DoingFrameLayout;
 import app.doing.com.doing.customView.ImageButtonCustom;
 import app.doing.com.doing.find.FindFragment;
 import app.doing.com.doing.handpick.HandpickFragment;
@@ -34,6 +35,8 @@ public class MainActivity extends Activity implements View.OnClickListener,View.
     //在被判定为滚动之前用户手指可以移动的最大值
     private int touchSlop;
 
+    private ConstraintLayout bottomLayout;
+
 
 
     @Override
@@ -50,9 +53,12 @@ public class MainActivity extends Activity implements View.OnClickListener,View.
     }
 
     private void initViews(){
-        FrameLayout frameLayout = findViewById(R.id.content);
-        frameLayout.setOnTouchListener(this);
         touchSlop = ViewConfiguration.get(this.getApplicationContext()).getScaledTouchSlop();
+        bottomLayout = findViewById(R.id.bottom_tap);
+
+        DoingFrameLayout frameLayout = findViewById(R.id.content);
+        // frameLayout.setOnTouchListener(this);
+        frameLayout.setView(bottomLayout);
 
         handpickText = findViewById(R.id.handpick_text);
         findText = findViewById(R.id.find_text);
@@ -159,27 +165,23 @@ public class MainActivity extends Activity implements View.OnClickListener,View.
 
     /*隐藏底部菜单*/
     private void hideBottom(){
-        handpickText.setVisibility(View.GONE);
-        findText.setVisibility(View.GONE);
-        momentText.setVisibility(View.GONE);
-        meText.setVisibility(View.GONE);
+        bottomLayout.setVisibility(View.GONE);
     }
 
     /*显示底部菜单*/
     private void showBottom(){
-        handpickText.setVisibility(View.VISIBLE);
-        findText.setVisibility(View.VISIBLE);
-        momentText.setVisibility(View.VISIBLE);
-        meText.setVisibility(View.VISIBLE);
+        bottomLayout.setVisibility(View.VISIBLE);
     }
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
+        Log.i("activity","滑动");
         switch(event.getAction()){
             case MotionEvent.ACTION_DOWN:
                 yDown = event.getRawY();
                 break;
             case MotionEvent.ACTION_MOVE:
+
                 float yRaw = event.getRawY();
                 int distance = (int)(yRaw - yDown);
                 //如果手指是上拉状态，显示底部
@@ -196,6 +198,8 @@ public class MainActivity extends Activity implements View.OnClickListener,View.
                 //手指抬起，显示底部
                 break;
         }
-        return true;
+        return false;
     }
+
+
 }

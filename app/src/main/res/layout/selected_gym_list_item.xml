@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/selected_gym_list_imageId"
+        android:layout_width="74dp"
+        android:layout_height="74dp"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="12dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+        android:id="@+id/selected_gym_list_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="22dp"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toRightOf="@id/selected_gym_list_imageId"
+        app:layout_constraintTop_toTopOf="@id/selected_gym_list_imageId"
+        android:gravity="left"
+        app:layout_constraintRight_toRightOf="@+id/selected_gym_list_place"/>
+
+
+    <TextView
+        android:id="@+id/selected_gym_list_address"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="10sp"
+        android:lines="2"
+        android:layout_marginTop="5dp"
+        app:layout_constraintLeft_toLeftOf="@id/selected_gym_list_name"
+        app:layout_constraintTop_toBottomOf="@id/selected_gym_list_name"
+        android:gravity="left"
+        app:layout_constraintRight_toRightOf="@+id/selected_gym_list_place"/>
+
+
+    <ImageView
+        android:id="@+id/selected_gym_list_place"
+        android:layout_width="11dp"
+        android:layout_height="16dp"
+        android:src="@drawable/place_indicator_icon"
+        android:layout_marginRight="7dp"
+        app:layout_constraintTop_toBottomOf="@id/selected_gym_list_address"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+
+    <RatingBar
+        android:id="@+id/selected_gym_list_ratingbar"
+        style="@style/heartRatingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        android:layout_marginTop="6dp"
+        app:layout_constraintTop_toBottomOf="@id/selected_gym_list_place"
+        app:layout_constraintLeft_toLeftOf="@id/selected_gym_list_name"
+        app:layout_constraintBottom_toBottomOf="@id/selected_gym_list_imageId"/>
+
+
+    <TextView
+        android:id="@+id/selected_gym_list_ratings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+
+        app:layout_constraintLeft_toRightOf="@id/selected_gym_list_ratingbar"
+        app:layout_constraintTop_toTopOf="@id/selected_gym_list_ratingbar"/>
+
+    <TextView
+        android:id="@+id/selected_gym_list_views"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:textSize="12sp"
+        app:layout_constraintLeft_toRightOf="@id/selected_gym_list_ratings"
+        app:layout_constraintTop_toTopOf="@id/selected_gym_list_ratings"/>
+
+    <TextView
+        android:id="@+id/selected_gym_list_distance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        app:layout_constraintTop_toBottomOf="@id/selected_gym_list_place"
+        app:layout_constraintRight_toRightOf="@+id/selected_gym_list_place"/>
+
+</android.support.constraint.ConstraintLayout>

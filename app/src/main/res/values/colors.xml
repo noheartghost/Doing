@@ -16,5 +16,10 @@
     <color name="textLightSecondary">#B2FFFFFF</color>
     <color name="textLightDisabled">#80FFFFFF</color>
     <color name="textLightDisabledDEPRECATED">#4CFFFFFF</color>
-  
+
+    <color name="action_text_color_normal" >#cfcfcf</color>
+    <color name="action_text_color_pressed" >#353535</color>
+    <color name="action_text_color_enabled" >#818585</color>
+
+
 </resources>

@@ -25,6 +25,7 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -39,10 +40,11 @@
             android:launchMode="singleTask" />
         <activity
             android:name=".handpick.CourseActivity"
-            android:launchMode="singleTask"/>
+            android:launchMode="singleTask" />
         <activity
             android:name=".handpick.CoachActivity"
-            android:launchMode="singleTask"></activity>
+            android:launchMode="singleTask" />
+        <activity android:name=".EditContentActivity"></activity>
     </application>
 
 </manifest>

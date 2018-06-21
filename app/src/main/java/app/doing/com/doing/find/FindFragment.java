@@ -27,6 +27,8 @@ public class FindFragment extends Fragment{
 
         initViews(findFragment);
 
+
+
         return findFragment;
     }
 
@@ -42,6 +44,7 @@ public class FindFragment extends Fragment{
         //设置item之间的间隔
         SpacesItemDecoration decoration=new SpacesItemDecoration(16);
         recyclerView.addItemDecoration(decoration);
+
     }
 
     //填充数据

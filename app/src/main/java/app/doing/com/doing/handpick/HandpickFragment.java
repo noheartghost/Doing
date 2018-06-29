@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,6 +37,8 @@ public class HandpickFragment extends Fragment implements View.OnClickListener{
     private ImageButtonCustom course_ibc;
     private ImageButtonCustom coach_ibc;
     //精选场馆、明星教练、最火团课等二级标题
+    private ViewPagerClass viewPager1, viewPager2;
+    private List<View> views1, views2;
     private SubtitleCustom gym_subTitle;
     private SubtitleCustom coach_subTitle;
     private SubtitleCustom course_subTitle;
@@ -55,8 +56,8 @@ public class HandpickFragment extends Fragment implements View.OnClickListener{
 
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup container, Bundle savedInstanceState){
         View handpickFragment = layoutInflater.inflate(R.layout.handpick_fragment,container,false);
+        initBanner(handpickFragment);
         initViews(handpickFragment);
-
         return handpickFragment;
     }
 
@@ -76,6 +77,14 @@ public class HandpickFragment extends Fragment implements View.OnClickListener{
         gym_ibc = view.findViewById(R.id.gym_image);
         course_ibc = view.findViewById(R.id.course_image);
         coach_ibc = view.findViewById(R.id.coach_image);
+
+        //初始化Banner
+        //首部
+        viewPager1 = view.findViewById(R.id.viewPager1);
+        viewPager1.setViewPagerViews(views1);
+        //中部
+        viewPager2 = view.findViewById(R.id.viewPager2);
+        viewPager2.setViewPagerViews(views2);
 
         gym_ibc.setOnClickListener(this);
         course_ibc.setOnClickListener(this);
@@ -142,20 +151,34 @@ public class HandpickFragment extends Fragment implements View.OnClickListener{
     }
 
     //定义轮播图片
-    private void initBanner(){
-        views = new ArrayList<>();
-        ImageView imageView1 = new ImageView(getActivity().getApplicationContext()) ;
-        ImageView imageView2 = new ImageView(getActivity().getApplicationContext());
-        ImageView imageView3 = new ImageView(getActivity().getApplicationContext());
-        ImageView imageView4 = new ImageView(getActivity().getApplicationContext());
+    private void initBanner(View view){
+        views1 = new ArrayList<>();
+        ImageView imageView1 = new ImageView(view.getContext());
+        ImageView imageView2 = new ImageView(view.getContext());
+        ImageView imageView3 = new ImageView(view.getContext());
+        ImageView imageView4 = new ImageView(view.getContext());
         imageView1.setBackgroundResource(R.drawable.gym1);
-        views.add(imageView1);
+        views1.add(imageView1);
         imageView2.setBackgroundResource(R.drawable.gym2);
-        views.add(imageView2);
+        views1.add(imageView2);
         imageView3.setBackgroundResource(R.drawable.gym3);
-        views.add(imageView3);
+        views1.add(imageView3);
         imageView4.setBackgroundResource(R.drawable.gym4);
-        views.add(imageView4);
+        views1.add(imageView4);
+
+        views2 = new ArrayList<>();
+        ImageView imageView5 = new ImageView(view.getContext());
+        ImageView imageView6 = new ImageView(view.getContext());
+        ImageView imageView7 = new ImageView(view.getContext());
+        ImageView imageView8 = new ImageView(view.getContext());
+        imageView5.setBackgroundResource(R.drawable.pic1);
+        views2.add(imageView5);
+        imageView6.setBackgroundResource(R.drawable.pic2);
+        views2.add(imageView6);
+        imageView7.setBackgroundResource(R.drawable.pic3);
+        views2.add(imageView7);
+        imageView8.setBackgroundResource(R.drawable.pic4);
+        views2.add(imageView8);
     }
 
     /*
@@ -226,7 +249,8 @@ public class HandpickFragment extends Fragment implements View.OnClickListener{
 
     @Override
     public void onStop() {
-        viewPager.stop();
+        viewPager1.stop();
+        viewPager2.stop();
         super.onStop();
     }
 }

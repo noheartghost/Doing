@@ -6,8 +6,11 @@ import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.view.ViewConfiguration;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 
+import android.view.ViewConfiguration;
 import app.doing.com.doing.customView.DoingFrameLayout;
 import app.doing.com.doing.customView.ImageButtonCustom;
 import app.doing.com.doing.find.FindFragment;

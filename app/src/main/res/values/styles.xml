@@ -10,9 +10,24 @@
 
     <style name="heartRatingBar" parent="@android:style/Widget.RatingBar">
         <item name="android:progressDrawable">@drawable/heart_rating_bar</item>
+        <item name="android:scaleX">0.5</item>
+        <item name="android:scaleY">0.5</item>
+        <item name="android:minHeight">32dip</item>
+        <item name="android:maxHeight">32dip</item>
+        <item name="android:transformPivotX">0dp</item>
+        <item name="android:transformPivotY">1dp</item>
+    </style>
+
+    <style name="heartRatingBarSmall" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/heart_ratingbar_small</item>
+        <item name="android:scaleX">0.5</item>
+        <item name="android:scaleY">0.5</item>
         <item name="android:minHeight">16dip</item>
         <item name="android:maxHeight">16dip</item>
+        <item name="android:transformPivotX">0dp</item>
+        <item name="android:transformPivotY">8dp</item>
     </style>
+
 
 
 </resources>

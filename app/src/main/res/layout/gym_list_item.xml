@@ -63,8 +63,9 @@
     <RatingBar
         android:id="@+id/gym_list_ratingbar"
         style="@style/heartRatingBar"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:isIndicator="true"
         android:numStars="5"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
@@ -78,8 +79,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="12sp"
-        android:layout_marginLeft="10dp"
-        app:layout_constraintLeft_toRightOf="@id/gym_list_ratingbar"
+        android:layout_marginLeft="110dp"
+        app:layout_constraintLeft_toLeftOf="@id/gym_list_name"
         app:layout_constraintTop_toTopOf="@id/gym_list_ratingbar"/>
 
 

@@ -13,7 +13,7 @@ import app.doing.com.doing.handpick.item.ListItem;
 
 /**
  * Created by cherry on 18-6-15.
- * 工具类，将JSon转换为Object
+ * 工具类，根据传入的type将JSon数组转换为Object数组
  */
 
 public final class ParseJSONWithJSONObject {
@@ -24,6 +24,7 @@ public final class ParseJSONWithJSONObject {
     public static final int SELECTED_GYM = 4;
     public static final int SELECTED_COURSE = 5;
 
+    //工具类，私有构造函数
     private  ParseJSONWithJSONObject(){
 
     }
@@ -31,6 +32,7 @@ public final class ParseJSONWithJSONObject {
     public static void parseListItem(List<ListItem> list, String jsonData,int type){
         try{
             JSONArray jsonArray = new JSONArray(jsonData);
+            //json数组的长度
             int length = jsonArray.length();
             switch (type){
                 case COACH:
@@ -57,7 +59,7 @@ public final class ParseJSONWithJSONObject {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
                         list.add(new GymListItem(
                                 jsonObject.getString("gymid"),
-                                jsonObject.getString("name"),
+                                jsonObject.getString("gymname"),
                                 jsonObject.getString("location"),
                                 jsonObject.getDouble("score"),
                                 jsonObject.getInt("commentnum"),

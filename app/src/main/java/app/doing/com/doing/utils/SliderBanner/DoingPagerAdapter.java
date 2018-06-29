@@ -10,8 +10,11 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
+import app.doing.com.doing.R;
+
 /**
  * Created by cherry on 18-6-13.
+ * 仅存放1张图片的banner适配器
  */
 
 public class DoingPagerAdapter extends PagerAdapter {
@@ -37,7 +40,9 @@ public class DoingPagerAdapter extends PagerAdapter {
     public Object instantiateItem(ViewGroup container, int position) {
         ImageView imageView = new ImageView(context);
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        Glide.with(context).load(list.get(position)).into(imageView);
+        //后期改为从网络获取图片
+        Glide.with(context).load(list.get(position))
+                .placeholder(R.drawable.rectangle_placeholder).into(imageView);
         container.addView(imageView);
         return imageView;
     }

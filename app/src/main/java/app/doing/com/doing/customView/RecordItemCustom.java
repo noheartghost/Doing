@@ -13,6 +13,7 @@ import app.doing.com.doing.R;
 
 /**
  * Created by cherry on 18-6-10.
+ * 对应订单的一项
  */
 
 public class RecordItemCustom extends ConstraintLayout{
@@ -33,6 +34,9 @@ public class RecordItemCustom extends ConstraintLayout{
         more = findViewById(R.id.record_item_more);
     }
 
+    /*
+    用于设置自定义组合控件的属性
+     */
     private void initType(Context context,AttributeSet attrs){
         TypedArray typedArray = context.obtainStyledAttributes(attrs,R.styleable.RecordItemCustom);
         int totalAttributes = typedArray.getIndexCount();

@@ -21,6 +21,10 @@ import app.doing.com.doing.R;
 
 /**
  * Created by cherry on 18-5-22.
+ * 自定义ImageButton
+ * 对应ui:
+ * 1.精选页场馆、教练和课程按钮
+ * 2.底部4个tab按钮
  */
 
 public class ImageButtonCustom extends ConstraintLayout {
@@ -35,10 +39,11 @@ public class ImageButtonCustom extends ConstraintLayout {
         imageView = findViewById(R.id.image_id);
         textView = findViewById(R.id.text_id);
 
+        //用于设置自定义组合控件的属性
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ImageButtonCustom);
         setText(typedArray.getString(R.styleable.ImageButtonCustom_text));
         setImage(typedArray.getResourceId(R.styleable.ImageButtonCustom_image, -1));
-        typedArray.recycle();
+        typedArray.recycle();//使用完后必须释放
     }
 
     public void setText(String text){
@@ -49,8 +54,17 @@ public class ImageButtonCustom extends ConstraintLayout {
         imageView.setBackgroundResource(sourceId);
     }
 
+    /*
+    按钮未被选中时字体颜色较浅
+     */
+    public void setTextUnSelected(){
+        textView.setTextColor(getResources().getColor(R.color.textDarkGrey));
+    }
 
-    public void onClick(View v) {
-        Log.i("ImageButton","clicked");
+    /*
+    按钮被选中时字体颜色加深
+     */
+    public void setTextSelected(){
+        textView.setTextColor(getResources().getColor(R.color.textGrey));
     }
 }

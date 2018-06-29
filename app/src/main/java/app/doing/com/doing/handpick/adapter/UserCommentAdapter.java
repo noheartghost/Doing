@@ -18,6 +18,7 @@ import app.doing.com.doing.handpick.item.UserCommentItem;
 
 /**
  * Created by cherry on 18-6-18.
+ * 对应课程详情页list
  */
 
 public class UserCommentAdapter extends RecyclerView.Adapter<UserCommentAdapter.ViewHolder>{

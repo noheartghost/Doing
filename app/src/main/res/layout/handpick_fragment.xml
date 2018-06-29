@@ -16,18 +16,31 @@
             android:layout_height="200dp">
         </app.doing.com.doing.ViewPagerClass>
 
+        <app.doing.com.doing.customView.ImageButtonCustom
+            android:id="@+id/coach_image"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:text="coach"
+            app:image="@drawable/coaching"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintTop_toTopOf="@+id/gym_image"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/gym_image"
+            app:text="教练"
+            />
+
 
         <app.doing.com.doing.customView.ImageButtonCustom
             android:id="@+id/gym_image"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
             app:image="@drawable/gym"
             android:layout_marginTop="10dp"
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintHorizontal_weight="1"
             app:layout_constraintTop_toBottomOf="@id/viewPager"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/coach_image"
             app:layout_constraintRight_toLeftOf="@+id/course_image"
             app:text="场馆"
             />
@@ -38,25 +51,14 @@
             android:layout_height="wrap_content"
             android:text="course"
             app:image="@drawable/course"
+            android:layout_marginRight="30dp"
             app:layout_constraintHorizontal_weight="1"
             app:layout_constraintTop_toTopOf="@id/gym_image"
             app:layout_constraintLeft_toRightOf="@id/gym_image"
-            app:layout_constraintRight_toLeftOf="@+id/coach_image"
+            app:layout_constraintRight_toRightOf="parent"
             app:text="课程" />
 
-        <app.doing.com.doing.customView.ImageButtonCustom
-            android:id="@+id/coach_image"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="30dp"
-            android:text="coach"
-            app:image="@drawable/coaching"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintTop_toTopOf="@id/gym_image"
-            app:layout_constraintLeft_toRightOf="@id/course_image"
-            app:layout_constraintRight_toRightOf="parent"
-            app:text="教练"
-            />
+
 
 
         <app.doing.com.doing.customView.SubtitleCustom

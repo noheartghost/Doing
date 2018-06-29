@@ -15,6 +15,7 @@ import app.doing.com.doing.R;
 
 /**
  * Created by cherry on 18-5-29.
+ * 对应精选页、list页等的二级标题
  */
 
 public class SubtitleCustom extends ConstraintLayout {

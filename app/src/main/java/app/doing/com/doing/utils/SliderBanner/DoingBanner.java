@@ -9,12 +9,15 @@ import java.util.List;
 
 /**
  * Created by cherry on 18-6-13.
+ * DoingBanner用于设置banner的基本信息，包括切换时间、内容个数等
+ * 同时规定该banner线程的活动内容
  */
 
 public class DoingBanner implements Runnable{
 
     private DoingPagerAdapter mpageAdapter;
     private Handler handler;
+    //判断当前banner是否处于活动状态
     private boolean isAlive;
     private boolean isContinue;
     private int position;

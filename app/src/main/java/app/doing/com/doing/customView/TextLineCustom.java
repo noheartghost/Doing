@@ -12,6 +12,7 @@ import app.doing.com.doing.R;
 
 /**
  * Created by cherry on 18-6-16.
+ * 对应我的页一项
  */
 
 public class TextLineCustom extends ConstraintLayout{
@@ -34,6 +35,9 @@ public class TextLineCustom extends ConstraintLayout{
 
     }
 
+    /*
+    用于设置自定义组合控件的属性
+     */
     private void initType(Context context,AttributeSet attrs){
         TypedArray typedArray = context.obtainStyledAttributes(attrs,R.styleable.TextLineCustom);
         int totalAttributes = typedArray.getIndexCount();

@@ -17,6 +17,7 @@ import app.doing.com.doing.R;
 
 /**
  * Created by cherry on 18-5-30.
+ * 自定义导航栏控件，可控制一些view的显示和隐藏
  */
 
 public class NavigatorBarCustom extends ConstraintLayout{
@@ -27,7 +28,7 @@ public class NavigatorBarCustom extends ConstraintLayout{
 
     public NavigatorBarCustom(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        this.setPadding(20,10,20,10);
+        this.setPadding(20,10,20,0);
         initView(context);
         initType(context,attrs);
     }
@@ -40,6 +41,9 @@ public class NavigatorBarCustom extends ConstraintLayout{
         image_center = findViewById(R.id.nav_image_center);
     }
 
+    /*
+    用于设置自定义组合控件的属性
+     */
     private void initType(Context context, AttributeSet attributeSet){
         TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.NavigatorBarCustom);
         int totalAttributes = typedArray.getIndexCount();
@@ -73,9 +77,12 @@ public class NavigatorBarCustom extends ConstraintLayout{
                     break;
             }
         }
-        typedArray.recycle();
+        typedArray.recycle();//使用完后必须释放
     }
 
+    /*
+    设置view的显示和隐藏
+     */
     private void setVisible(TypedArray typedArray, View view,int index){
         boolean visible = typedArray.getBoolean(index,true);
         if(visible){
@@ -97,4 +104,19 @@ public class NavigatorBarCustom extends ConstraintLayout{
         text_title.setText(text);
     }
 
+    public ImageButton getImage_left() {
+        return image_left;
+    }
+
+    public ImageButton getImage_right() {
+        return image_right;
+    }
+
+    public TextView getText_title() {
+        return text_title;
+    }
+
+    public ImageView getImage_center() {
+        return image_center;
+    }
 }

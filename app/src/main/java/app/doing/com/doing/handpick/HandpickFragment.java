@@ -29,15 +29,19 @@ import app.doing.com.doing.handpick.item.GymItem;
 
 /**
  * Created by cherry on 18-5-21.
+ * 精选页
  */
 
 public class HandpickFragment extends Fragment implements View.OnClickListener{
+    //场馆、课程和教练按钮
     private ImageButtonCustom gym_ibc;
     private ImageButtonCustom course_ibc;
     private ImageButtonCustom coach_ibc;
+    //精选场馆、明星教练、最火团课等二级标题
     private SubtitleCustom gym_subTitle;
     private SubtitleCustom coach_subTitle;
     private SubtitleCustom course_subTitle;
+    //用于展示banner
     private ViewPagerClass viewPager;
     private List<View> views;
 
@@ -59,8 +63,8 @@ public class HandpickFragment extends Fragment implements View.OnClickListener{
     private void initViews(View view){
         //初始化Banner
         viewPager = view.findViewById(R.id.viewPager);
-        initBanner();
-        viewPager.setViewPagerViews(views);
+//        initBanner();
+//        viewPager.setViewPagerViews(views);
 
         initRecyclerView(view);
         initListButton(view);
@@ -102,6 +106,7 @@ public class HandpickFragment extends Fragment implements View.OnClickListener{
 
         //设置场馆gym
         GymItemAdapter gymItemAdapter = new GymItemAdapter(gymItemList);
+        gymItemAdapter.setJumpActivity(GymDetailActivity.class);//设置点击item项后跳转到的页面
         recyclerView_gym.setAdapter(gymItemAdapter);
 
         //设置教练coach
@@ -114,6 +119,7 @@ public class HandpickFragment extends Fragment implements View.OnClickListener{
 
         //设置教练coach
         CoachItemAdapter coachItemAdapter = new CoachItemAdapter(coachItemList);
+        coachItemAdapter.setJumpActivity(CoachDetailActivity.class);//设置点击item项后跳转到的页面
         recyclerView_coach.setAdapter(coachItemAdapter);
 
         //设置课程
@@ -126,7 +132,13 @@ public class HandpickFragment extends Fragment implements View.OnClickListener{
 
         //设置课程
         CourseItemAdapter courseItemAdapter = new CourseItemAdapter(courseItemList);
+        courseItemAdapter.setJumpActivity(CourseDetailActivity.class);//设置点击item项后跳转到的页面
         recyclerView_course.setAdapter(courseItemAdapter);
+
+        //设置recyclerView不自动获取焦点否则页面将从recyclerView开始
+        recyclerView_gym.setFocusable(false);
+        recyclerView_coach.setFocusable(false);
+        recyclerView_course.setFocusable(false);
     }
 
     //定义轮播图片
@@ -146,6 +158,10 @@ public class HandpickFragment extends Fragment implements View.OnClickListener{
         views.add(imageView4);
     }
 
+    /*
+    几个详情页界面布局类似，使用相同的activity减少开销
+    使用indicator指示当前属于哪个界面
+     */
     @Override
     public void onClick(View v) {
         //判断点击的按钮

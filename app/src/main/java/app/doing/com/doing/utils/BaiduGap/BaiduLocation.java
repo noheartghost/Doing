@@ -29,6 +29,7 @@ public class BaiduLocation {
         mLocationClient = new LocationClient(context);
         mLocationClient.registerLocationListener(locationListener);
 
+        //获取相关权限
         List<String> permissionList = new ArrayList<>();
         if(ContextCompat.checkSelfPermission(activity,Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED){

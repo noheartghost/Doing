@@ -38,6 +38,10 @@ import android.widget.ImageView;
 
 import app.doing.com.doing.R;
 
+/*
+
+ */
+
 public class CircleImageView extends android.support.v7.widget.AppCompatImageView {
 
     private static final ScaleType SCALE_TYPE = ScaleType.CENTER_CROP;

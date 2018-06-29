@@ -3,6 +3,7 @@ package app.doing.com.doing.handpick;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -11,10 +12,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import app.doing.com.doing.R;
+import app.doing.com.doing.customView.NavigatorBarCustom;
 import app.doing.com.doing.customView.RecordItemCustom;
 import app.doing.com.doing.handpick.item.RecordItem;
 
-public class PayActivity extends AppCompatActivity {
+/*
+支付页面
+ */
+
+public class PayActivity extends AppCompatActivity implements View.OnClickListener{
     private RecordItem recordItem;
     private TextView gymName;
     private TextView address;
@@ -33,10 +39,7 @@ public class PayActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pay);
 
         getRecord();
-
         initView();
-
-
     }
 
     private void getRecord(){
@@ -49,6 +52,11 @@ public class PayActivity extends AppCompatActivity {
     }
 
     private void initView(){
+        //设置导航栏左右键的监听事件
+        NavigatorBarCustom navigatorBarCustom = findViewById(R.id.pay_navigator);
+        navigatorBarCustom.setLeftImageButtonListener(this);
+        navigatorBarCustom.setRightImageButtonListener(this);
+
         gymName = findViewById(R.id.pay_name);
         address = findViewById(R.id.pay_address);
         date = findViewById(R.id.record_date);
@@ -84,6 +92,9 @@ public class PayActivity extends AppCompatActivity {
 
     }
 
+    /*
+    添加代金券item项
+     */
     private void addTicketItem(int text){
         LayoutInflater layoutInflater = LayoutInflater.from(this);
         TextView textView = (TextView) layoutInflater.inflate(R.layout.ticket_item_layout,null,false);
@@ -93,4 +104,12 @@ public class PayActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.nav_image_left:
+                this.finish();
+                break;
+        }
+    }
 }

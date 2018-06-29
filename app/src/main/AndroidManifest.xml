@@ -32,13 +32,17 @@
             android:value="GTqbIz4bhjagBTESGcN2FLLulV2pqTxV" />
 
         <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
-            android:process=":remote"></service>
+            android:process=":remote" />
 
         <activity
             android:name=".WelcomeActivity"
@@ -50,14 +54,11 @@
             android:name=".handpick.PayActivity"
             android:launchMode="singleTask" />
         <activity android:name=".handpick.ListActivity" />
-        <activity android:name=".handpick.GymDetailActivity"></activity>
+        <activity android:name=".handpick.GymDetailActivity" />
         <activity android:name=".handpick.CourseDetailActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
+        <activity android:name=".handpick.CoachDetailActivity"></activity>
     </application>
 
 </manifest>

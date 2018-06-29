@@ -10,6 +10,7 @@ import android.widget.FrameLayout;
 
 /**
  * Created by cherry on 18-6-12.
+ * 用于控制底部栏的显示和隐藏
  */
 
 public class DoingFrameLayout extends FrameLayout{
@@ -23,12 +24,16 @@ public class DoingFrameLayout extends FrameLayout{
         super(context);
     }
 
-    public void setView(View view){
-        this.view = view;
-    }
-
     public DoingFrameLayout(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+    }
+
+    /**
+     * 用于设置显示和隐藏的ui布局
+     * @param view ui布局
+     */
+    public void setView(View view){
+        this.view = view;
     }
 
     @Override
@@ -37,7 +42,7 @@ public class DoingFrameLayout extends FrameLayout{
         //监听滚动事件，控制view的可见与隐藏
         switch(event.getAction()){
             case MotionEvent.ACTION_DOWN:
-                yDown = event.getRawY();
+                yDown = event.getRawY();//记录滚动的初始位置
                 break;
             case MotionEvent.ACTION_MOVE:
                 float yRaw = event.getRawY();

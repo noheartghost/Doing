@@ -3,15 +3,10 @@ package app.doing.com.doing;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
-import android.util.Log;
-import android.view.MotionEvent;
 import android.view.ViewConfiguration;
-import android.widget.FrameLayout;
 import android.view.View;
-import android.widget.Toast;
 
 import app.doing.com.doing.customView.DoingFrameLayout;
 import app.doing.com.doing.customView.ImageButtonCustom;
@@ -20,12 +15,14 @@ import app.doing.com.doing.handpick.HandpickFragment;
 import app.doing.com.doing.me.MeFragment;
 import app.doing.com.doing.moment.MomentFragment;
 
-public class MainActivity extends Activity implements View.OnClickListener,View.OnTouchListener{
+public class MainActivity extends Activity implements View.OnClickListener{
+    //精选、发现、圈子和我的四个碎片
     private HandpickFragment handpickFragment;
     private FindFragment findFragment;
     private MomentFragment momentFragment;
     private MeFragment meFragment;
 
+    //四个碎片对应的入口按钮
     private ImageButtonCustom handpickText;
     private ImageButtonCustom findText;
     private ImageButtonCustom momentText;
@@ -33,13 +30,14 @@ public class MainActivity extends Activity implements View.OnClickListener,View.
 
     /*对Fragment进行管理*/
     private FragmentManager fragmentManager;
-
     //手指按下时的屏幕y坐标
     private float yDown;
     //在被判定为滚动之前用户手指可以移动的最大值
     private int touchSlop;
-
+    //底部栏，便于控制底部栏的显示和隐藏
     private ConstraintLayout bottomLayout;
+    //使用自定义Fragment控件，用于监听屏幕滚动事件并设置底部栏的显示与隐藏
+    private DoingFrameLayout frameLayout;
 
 
 
@@ -50,18 +48,15 @@ public class MainActivity extends Activity implements View.OnClickListener,View.
 
         //初始化布局元素
         initViews();
-        fragmentManager = getFragmentManager();
         setTabSelection(0);
-      
-
     }
 
     private void initViews(){
         touchSlop = ViewConfiguration.get(this.getApplicationContext()).getScaledTouchSlop();
         bottomLayout = findViewById(R.id.bottom_tap);
-
-        DoingFrameLayout frameLayout = findViewById(R.id.content);
-        // frameLayout.setOnTouchListener(this);
+        fragmentManager = getFragmentManager();
+        frameLayout = findViewById(R.id.content);
+        //设置显示与隐藏的ui控件为底部栏
         frameLayout.setView(bottomLayout);
 
         handpickText = findViewById(R.id.handpick_text);
@@ -72,7 +67,6 @@ public class MainActivity extends Activity implements View.OnClickListener,View.
         findText.setOnClickListener(this);
         momentText.setOnClickListener(this);
         meText.setOnClickListener(this);
-        
     }
 
 
@@ -96,32 +90,44 @@ public class MainActivity extends Activity implements View.OnClickListener,View.
         }
     }
 
+    /*
+    设置所有按钮为未选中时样式
+     */
     private void resetTabIcon(){
         handpickText.setImage(R.drawable.handpick_icon);
+        handpickText.setTextUnSelected();
         findText.setImage(R.drawable.find_icon);
+        findText.setTextUnSelected();
         momentText.setImage(R.drawable.moment_icon);
+        momentText.setTextUnSelected();
         meText.setImage(R.drawable.me_icon);
+        meText.setTextUnSelected();
     }
 
     /*根据传入的index设置显示的tab*/
     private void setTabSelection(int index){
+        //每次选中新按钮都需要重设一遍样式
         resetTabIcon();
         //每次切换fragment时，开启一个新的fragment事物
         FragmentTransaction transaction = fragmentManager.beginTransaction();
+        //隐藏原有fragment
         hideFragments(transaction);
         switch(index){
             case 0:
+                //设置该项为选中
                 handpickText.setImage(R.drawable.handpick_selected_icon);
+                handpickText.setTextSelected();
                 if(handpickFragment == null){
                     handpickFragment = new HandpickFragment();
-
                     transaction.add(R.id.content,handpickFragment);
                 }else{
                     transaction.show(handpickFragment);
                 }
                 break;
             case 1:
+                //设置该项为选中
                 findText.setImage(R.drawable.find_selected_icon);
+                findText.setTextSelected();
                 if(findFragment == null){
                     findFragment = new FindFragment();
                     transaction.add(R.id.content,findFragment);
@@ -130,7 +136,9 @@ public class MainActivity extends Activity implements View.OnClickListener,View.
                 }
                 break;
             case 2:
+                //设置该项为选中
                 momentText.setImage(R.drawable.moment_selected_icon);
+                momentText.setTextSelected();
                 if(momentFragment == null){
                     momentFragment = new MomentFragment();
                     transaction.add(R.id.content,momentFragment);
@@ -140,7 +148,9 @@ public class MainActivity extends Activity implements View.OnClickListener,View.
                 break;
             case 3:
             default:
+                //设置该项为选中
                 meText.setImage(R.drawable.me_selected_icon);
+                meText.setTextSelected();
                 if(meFragment == null){
                     meFragment = new MeFragment();
                     transaction.add(R.id.content,meFragment);
@@ -167,44 +177,5 @@ public class MainActivity extends Activity implements View.OnClickListener,View.
             transaction.hide(meFragment);
         }
     }
-
-    /*隐藏底部菜单*/
-    private void hideBottom(){
-        bottomLayout.setVisibility(View.GONE);
-    }
-
-    /*显示底部菜单*/
-    private void showBottom(){
-        bottomLayout.setVisibility(View.VISIBLE);
-    }
-
-    @Override
-    public boolean onTouch(View v, MotionEvent event) {
-        Log.i("activity","滑动");
-        switch(event.getAction()){
-            case MotionEvent.ACTION_DOWN:
-                yDown = event.getRawY();
-                break;
-            case MotionEvent.ACTION_MOVE:
-
-                float yRaw = event.getRawY();
-                int distance = (int)(yRaw - yDown);
-                //如果手指是上拉状态，显示底部
-                if (distance <= -touchSlop){
-                    showBottom();
-                }
-                //如果手指是下拉状态，隐藏底部
-                if (distance > touchSlop){
-                    hideBottom();
-                }
-                break;
-            case MotionEvent.ACTION_UP:
-            default:
-                //手指抬起，显示底部
-                break;
-        }
-        return false;
-    }
-
 
 }

@@ -3,10 +3,10 @@ package app.doing.com.doing.handpick;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -33,14 +33,12 @@ import app.doing.com.doing.customView.NavigatorBarCustom;
 import app.doing.com.doing.customView.SelectTabCustom;
 import app.doing.com.doing.handpick.adapter.CoachListItemAdapter;
 import app.doing.com.doing.handpick.adapter.CourseListItemAdapter;
-import app.doing.com.doing.handpick.adapter.GymItemAdapter;
 import app.doing.com.doing.handpick.adapter.GymListItemAdapter;
 import app.doing.com.doing.handpick.adapter.SelectedCoachListItemAdapter;
 import app.doing.com.doing.handpick.adapter.SelectedCourseListItemAdapter;
 import app.doing.com.doing.handpick.adapter.SelectedGymListItemAdapter;
 import app.doing.com.doing.handpick.item.CoachListItem;
 import app.doing.com.doing.handpick.item.CourseListItem;
-import app.doing.com.doing.handpick.item.GymListItem;
 import app.doing.com.doing.handpick.item.ListItem;
 import app.doing.com.doing.utils.BaiduGap.BaiduLocation;
 import app.doing.com.doing.utils.Decoration.SpacesItemDecoration;
@@ -107,7 +105,7 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
     根据indicator指定Navigator显示内容
      */
     private void initNavigator(){
-        NavigatorBarCustom navigatorBarCustom = findViewById(R.id.list_navigator_bar);
+        NavigatorBarCustom navigatorBarCustom = (NavigatorBarCustom) findViewById(R.id.list_navigator_bar);
         switch (indicator){
             case 0:
                 navigatorBarCustom.setText_title("健身教练");
@@ -138,10 +136,10 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
     初始化4个tab按钮，并设置初始状态
      */
     private void initTab(){
-        listTabNear = findViewById(R.id.list_tab_near);
-        listTabType = findViewById(R.id.list_tab_type);
-        listTabScore = findViewById(R.id.list_tab_score);
-        listTabSelect = findViewById(R.id.list_tab_select);
+        listTabNear = (SelectTabCustom) findViewById(R.id.list_tab_near);
+        listTabType = (SelectTabCustom) findViewById(R.id.list_tab_type);
+        listTabScore = (SelectTabCustom) findViewById(R.id.list_tab_score);
+        listTabSelect = (SelectTabCustom) findViewById(R.id.list_tab_select);
 
         listTabNear.setOnClickListener(this);
         listTabType.setOnClickListener(this);
@@ -169,7 +167,7 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
         listBannerList.add(R.drawable.gtm_item_pic);
         listBannerList.add(R.drawable.gtm_item_pic);
 
-        viewPager = findViewById(R.id.list_viewpager1);
+        viewPager = (ViewPager) findViewById(R.id.list_viewpager1);
         //设置viewPager能存放的页面最多为3个
         viewPager.setOffscreenPageLimit(3);
         //设置page间距，隔开banner
@@ -229,7 +227,7 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
         listItemList = new ArrayList<>();
 
         //获取recyclerView资源
-        recyclerView = findViewById(R.id.recycler_list);
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_list);
         //禁止recyclerView自动获取焦点
         recyclerView.setFocusable(false);
         //获取到数据后填入recyclerView

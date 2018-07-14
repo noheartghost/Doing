@@ -9,6 +9,8 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <!-- 获取网络连接 -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 获取相机权限 -->
+    <uses-permission android:name="android.permission.CAMERA" />
     <!-- 获取经纬度 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -19,6 +21,7 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <!-- 获取打电话权限 -->
     <uses-permission android:name="android.permission.CALL_PHONE" />
+
 
     <application
         android:allowBackup="true"
@@ -55,10 +58,11 @@
             android:launchMode="singleTask" />
         <activity android:name=".handpick.ListActivity" />
         <activity android:name=".handpick.GymDetailActivity" />
-        <activity android:name=".handpick.CourseDetailActivity">
-
-        </activity>
-        <activity android:name=".handpick.CoachDetailActivity"></activity>
+        <activity android:name=".handpick.CourseDetailActivity" />
+        <activity android:name=".handpick.CoachDetailActivity" />
+        <activity android:name=".AddContentActivity" />
+        <activity android:name=".photopicker.PhotoPickerActivity" />
+        <activity android:name=".photopicker.PhotoPreviewActivity"></activity>
     </application>
 
 </manifest>

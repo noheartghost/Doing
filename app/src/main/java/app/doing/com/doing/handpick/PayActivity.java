@@ -1,10 +1,9 @@
 package app.doing.com.doing.handpick;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -53,19 +52,19 @@ public class PayActivity extends AppCompatActivity implements View.OnClickListen
 
     private void initView(){
         //设置导航栏左右键的监听事件
-        NavigatorBarCustom navigatorBarCustom = findViewById(R.id.pay_navigator);
+        NavigatorBarCustom navigatorBarCustom = (NavigatorBarCustom) findViewById(R.id.pay_navigator);
         navigatorBarCustom.setLeftImageButtonListener(this);
         navigatorBarCustom.setRightImageButtonListener(this);
 
-        gymName = findViewById(R.id.pay_name);
-        address = findViewById(R.id.pay_address);
-        date = findViewById(R.id.record_date);
-        person = findViewById(R.id.record_person);
-        phone = findViewById(R.id.record_phone);
-        time = findViewById(R.id.record_time);
-        tickets = findViewById(R.id.record_ticket);
-        price = findViewById(R.id.record_price);
-        ticketList = findViewById(R.id.record_ticket_list);
+        gymName = (TextView) findViewById(R.id.pay_name);
+        address = (TextView) findViewById(R.id.pay_address);
+        date = (RecordItemCustom) findViewById(R.id.record_date);
+        person = (RecordItemCustom) findViewById(R.id.record_person);
+        phone = (RecordItemCustom) findViewById(R.id.record_phone);
+        time = (RecordItemCustom) findViewById(R.id.record_time);
+        tickets = (TextView) findViewById(R.id.record_ticket);
+        price = (TextView) findViewById(R.id.record_price);
+        ticketList = (LinearLayout) findViewById(R.id.record_ticket_list);
 
         gymName.setText(recordItem.getName());
         address.setText(recordItem.getAddress());

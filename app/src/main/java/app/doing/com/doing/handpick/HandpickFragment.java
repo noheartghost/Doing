@@ -63,7 +63,7 @@ public class HandpickFragment extends Fragment implements View.OnClickListener{
 
     private void initViews(View view){
         //初始化Banner
-        viewPager = view.findViewById(R.id.viewPager);
+        viewPager = view.findViewById(R.id.viewPager1);
 //        initBanner();
 //        viewPager.setViewPagerViews(views);
 

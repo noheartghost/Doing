@@ -55,11 +55,11 @@ public class GymDetailActivity extends AppCompatActivity implements View.OnClick
 
     private void initView(){
         //设置导航栏左右键的响应事件
-        NavigatorBarCustom navigatorBarCustom = findViewById(R.id.gym_detail_nav);
+        NavigatorBarCustom navigatorBarCustom = (NavigatorBarCustom) findViewById(R.id.gym_detail_nav);
         navigatorBarCustom.setLeftImageButtonListener(this);
         navigatorBarCustom.setRightImageButtonListener(this);
 
-        viewPager = findViewById(R.id.gym_detail_banner);
+        viewPager = (ViewPager) findViewById(R.id.gym_detail_banner);
         //模拟数据，后期向网络获取
         List<Integer> list = new ArrayList<>();
         for(int i = 0;i<3;i++){
@@ -82,10 +82,10 @@ public class GymDetailActivity extends AppCompatActivity implements View.OnClick
         new Thread(banner).start();
 
         //获得ui布局
-        gymName = findViewById(R.id.gym_banner_name);
-        gymAddress = findViewById(R.id.gym_banner_address);
-        gymRating = findViewById(R.id.gym_banner_ratingbar);
-        gymTag = findViewById(R.id.gym_banner_tag);
+        gymName = (TextView) findViewById(R.id.gym_banner_name);
+        gymAddress = (TextView) findViewById(R.id.gym_banner_address);
+        gymRating = (RatingBar) findViewById(R.id.gym_banner_ratingbar);
+        gymTag = (TextView) findViewById(R.id.gym_banner_tag);
 
         //设置数据，后期从网络获取
         gymName.setText("宝力豪健身(大悦城南区)");
@@ -103,10 +103,9 @@ public class GymDetailActivity extends AppCompatActivity implements View.OnClick
         getCoachItemList();
         getCourseItemList();
 
-        subtitleCustomCoach = findViewById(R.id.gym_detail_coach_title);
-        subtitleCustomCourse = findViewById(R.id.gym_detail_course_title);
-        recyclerViewCoach = findViewById(R.id.gym_detail_coach);
-        recyclerViewCourse = findViewById(R.id.gym_detail_course);
+        subtitleCustomCoach = (SubtitleCustom) findViewById(R.id.gym_detail_coach_title);
+        subtitleCustomCourse = (SubtitleCustom) findViewById(R.id.gym_detail_course_title);
+        recyclerViewCoach = (RecyclerView) findViewById(R.id.gym_detail_course);
 
         CoachItemAdapter coachItemAdapter = new CoachItemAdapter(coachItemList);
         recyclerViewCoach.setAdapter(coachItemAdapter);

@@ -1,7 +1,9 @@
 package app.doing.com.doing.find;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
@@ -11,6 +13,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
+import app.doing.com.doing.AddContentActivity;
 import app.doing.com.doing.R;
 import app.doing.com.doing.others.Find;
 import app.doing.com.doing.others.FindAdapter;
@@ -21,13 +24,12 @@ public class FindFragment extends Fragment{
 
     private RecyclerView recyclerView;
     private List<Find> productList;
+    private FloatingActionButton fab;
 
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup container, Bundle savedInstanceState){
         View findFragment = layoutInflater.inflate(R.layout.find_fragment,container,false);
 
         initViews(findFragment);
-
-
 
         return findFragment;
     }
@@ -44,6 +46,16 @@ public class FindFragment extends Fragment{
         //设置item之间的间隔
         SpacesItemDecoration decoration=new SpacesItemDecoration(16);
         recyclerView.addItemDecoration(decoration);
+
+        //悬浮按钮
+        fab = view.findViewById(R.id.fab_addfind);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), AddContentActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 

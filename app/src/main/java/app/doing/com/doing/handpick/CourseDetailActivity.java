@@ -63,18 +63,18 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
 
     private void initView(){
         //设置导航栏左右键的响应事件
-        NavigatorBarCustom navigatorBarCustom = findViewById(R.id.course_detail_navigator);
+        NavigatorBarCustom navigatorBarCustom = (NavigatorBarCustom)findViewById(R.id.course_detail_navigator);
         navigatorBarCustom.setLeftImageButtonListener(this);
         navigatorBarCustom.setRightImageButtonListener(this);
 
-        image = findViewById(R.id.course_detail_image);
-        name = findViewById(R.id.course_detail_name);
-        ratingBar = findViewById(R.id.course_detail_ratingbar);
-        introduction = findViewById(R.id.course_detail_introduction);
-        details = findViewById(R.id.course_detail_details);
-        recyclerView = findViewById(R.id.course_user_comment);
+        image = (ImageView)findViewById(R.id.course_detail_image);
+        name = (TextView) findViewById(R.id.course_detail_name);
+        ratingBar = (RatingBar) findViewById(R.id.course_detail_ratingbar);
+        introduction = (TextView) findViewById(R.id.course_detail_introduction);
+        details = (TextView) findViewById(R.id.course_detail_details);
+        recyclerView = (RecyclerView) findViewById(R.id.course_user_comment);
         recyclerView.setFocusable(false);
-        purchase = findViewById(R.id.course_purchase);
+        purchase = (TextView) findViewById(R.id.course_purchase);
 
         //设置点击购买按钮后跳转到订单详情页
         purchase.setOnClickListener(new View.OnClickListener() {
